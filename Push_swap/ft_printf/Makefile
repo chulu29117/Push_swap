@@ -6,11 +6,11 @@
 #    By: clu <clu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/13 09:56:36 by clu               #+#    #+#              #
-#    Updated: 2024/12/20 21:03:52 by clu              ###   ########.fr        #
+#    Updated: 2024/12/22 21:51:51 by clu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf.a
+NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
