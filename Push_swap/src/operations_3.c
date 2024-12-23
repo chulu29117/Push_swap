@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 23:53:07 by clu               #+#    #+#             */
-/*   Updated: 2024/12/21 15:31:36 by clu              ###   ########.fr       */
+/*   Updated: 2024/12/23 11:39:41 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	rra(t_stack *stack_a)
 // Shift down all elements of stack_b by 1
 void	rrb(t_stack *stack_b)
 {
-	rrb(stack_b);
+	rra(stack_b);
 }
 
 // Run rra and rrb at the same time

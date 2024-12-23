@@ -6,14 +6,14 @@
 #    By: clu <clu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 20:33:14 by clu               #+#    #+#              #
-#    Updated: 2024/12/22 21:52:23 by clu              ###   ########.fr        #
+#    Updated: 2024/12/23 11:39:03 by clu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I$(LIBFT_DIR) -I$(FT_PRINTF)
+CFLAGS = -Wall -Werror -Wextra
 LIBFT_DIR = Libft
 FT_PRINTF = ft_printf
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -31,6 +31,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(PRINTF)
 	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT_DIR) -lft -L$(FT_PRINTF) -lftprintf -o $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -I$(FT_PRINTF) -c $< -o $@
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
