@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 23:53:07 by clu               #+#    #+#             */
-/*   Updated: 2024/12/23 11:39:41 by clu              ###   ########.fr       */
+/*   Updated: 2024/12/26 12:41:31 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ void	rra(t_stack *stack_a)
 	old_bottom->next = stack_a->top;		// link the old_bottom to the top
 	stack_a->top = old_bottom;				// update top pointer
 	stack_a->bottom = current;				// update bottom pointer
+	ft_printf("rra\n");
 }
 
 // Shift down all elements of stack_b by 1
 void	rrb(t_stack *stack_b)
 {
 	rra(stack_b);
+	ft_printf("rrb\n");
 }
 
 // Run rra and rrb at the same time
@@ -42,4 +44,5 @@ void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
 	ra(stack_a);
 	ra(stack_b);
+	ft_printf("rrr\n");
 }

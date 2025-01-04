@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:02 by clu               #+#    #+#             */
-/*   Updated: 2024/12/22 16:23:08 by clu              ###   ########.fr       */
+/*   Updated: 2024/12/26 12:41:52 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ int	main(int argc, char **argv)
 			free_stack(stack_b);
 			return (1);
 		}
+		// Call sorting algorithm
+		// sort_stack(stack_a, stack_b)
+		if(stack_a->size == 2)
+			sort_two(stack_a);
+		else if(stack_a->size == 3)
+			sort_three(stack_a);
+		else if(stack_a->size <= 5)
+			sort_four_five(stack_a, stack_b);
 	}
 	
 	// Print initial stacks for debugging
@@ -36,9 +44,6 @@ int	main(int argc, char **argv)
 	print_stack(stack_a, "A");
 	ft_printf("Initial Stack B:\n");
 	print_stack(stack_b, "B");
-
-	// Call sorting algorithm
-	// sort_stack(stack_a, stack_b)
 
 	// Free memory
 	free_stack(stack_a);
