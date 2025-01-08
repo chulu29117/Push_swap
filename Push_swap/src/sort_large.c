@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:11:48 by clu               #+#    #+#             */
-/*   Updated: 2025/01/08 12:22:02 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/08 13:55:23 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,26 @@ int	*copy_stack_to_array(t_stack *stack, int size)
 // Sort the array
 void	sort_array(int	*array, int size)
 {
-	
+	int	i;
+	int	j;
+	int	temp;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (array[i] > array[j])
+			{
+				temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 // Normalize values in the stack to indices
@@ -91,3 +110,11 @@ void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
+void	sort_large(t_stack *stack_a, t_stack *stack_b)
+{
+	int	*array;
+
+	array = copy_stack_to_array(stack_a, stack_a->size);
+	if (!array)
+		handle_error(stack_a, stack_b, NULL);
+}
