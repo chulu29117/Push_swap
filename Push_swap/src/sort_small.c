@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:26:14 by clu               #+#    #+#             */
-/*   Updated: 2025/01/02 17:49:57 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/07 18:41:34 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 // Sort 2 elements
 void	sort_two(t_stack *stack_a)
 {
-	if(stack_a->top->value > stack_a->top->next->value)
+	if (stack_a->top == NULL)
+		return ;
+	if (stack_a->top->value > stack_a->top->next->value)
 		sa(stack_a);	// swap top 2 elements
 }
 
@@ -26,14 +28,17 @@ void	sort_three(t_stack *stack_a)
 	int	second;
 	int	third;
 
+	if (stack_a == NULL || stack_a->top == NULL ||
+		stack_a->top->next == NULL || stack_a->top->next->next == NULL)
+		return ;
 	first = stack_a->top->value;
 	second = stack_a->top->next->value;
 	third = stack_a->top->next->next->value;
-	if(first > second && second < third && first < third)
+	if (first > second && second < third && first < third)
 		sa(stack_a);	// Case 1: 2 1 3
-	else if(first > second && second < third && first > third)
+	else if (first > second && second < third && first > third)
 		ra(stack_a);	// Case 2: 3 1 2
-	else if(first < second && second > third && first < third)
+	else if (first < second && second > third && first < third)
 	{
 		sa(stack_a);
 		ra(stack_a);	// Case 3: 1 3 2
@@ -43,7 +48,7 @@ void	sort_three(t_stack *stack_a)
 		sa(stack_a);
 		rra(stack_a);	// Case 4: 3 2 1
 	}
-	else if(first < second && second > third && first > third)
+	else if (first < second && second > third && first > third)
 		rra(stack_a);	// Case 5: 2 3 1
 }
 
@@ -55,13 +60,15 @@ int	find_min_index(t_stack *stack_a)
 	int		min_index;
 	int		min;
 
+	if (stack_a->top == NULL)
+		return (-1);
 	current = stack_a->top;		// points to the top of stack
 	min = current->value;		// stores the first value as the smallest candidate
 	min_index = 0;
 	index = 0;					// current position
 	while (current)				// loop through until current becomes NULL
 	{
-		if(current->value < min)	// compare current value with min
+		if (current->value < min)	// compare current value with min
 		{
 			min = current->value;	// undate min to current value
 			min_index = index;		// update min_index to current index
@@ -75,17 +82,27 @@ int	find_min_index(t_stack *stack_a)
 // Sort 4&5 elements
 void	sort_four_five(t_stack *stack_a, t_stack *stack_b)
 {
+	int	min_index;
+	
+	if (stack_a == NULL || stack_b == NULL || stack_a->size < 4)
+		return ;	
 	while (stack_a->size > 3)
 	{
-		while (find_min_index(stack_a) > 0)
+		min_index = find_min_index(stack_a);
+		if (min_index == -1)
+			return ;
+		while ((min_index = find_min_index(stack_a)) > 0)
 		{
-			if(find_min_index(stack_a) <= stack_a->size / 2)	// if index is before mid point
+			if (min_index <= stack_a->size / 2)	// if index is before mid point
 				ra(stack_a);					// rotate up
 			else
 				rra(stack_a);					// rotate down
+
 		}
-		if (stack_a->size > 0)
+		if (stack_a->size > 0 && stack_a->top != NULL)
 			pb(stack_a, stack_b);
+		else
+			return ;
 	}
 	sort_three(stack_a);	// sort the remaining 3 elements
 	while (stack_b->size > 0)

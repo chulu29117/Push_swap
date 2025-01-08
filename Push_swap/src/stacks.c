@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:32:54 by clu               #+#    #+#             */
-/*   Updated: 2024/12/20 23:43:32 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/07 20:47:42 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,12 @@ int	pop(t_stack *stack)
 	// temp pointer for the top node
 	t_node 	*temp;
 	int		value;	// value to store the value of the top node
-	
-	if (stack->size == 0)
-		return (-1);			// stack is empty
+
+	if (!stack || !stack->top)	// NULL or empty check
+		return (-1);			// Return error code for invalid pop
 	temp = stack->top;			// save current top node in temp
 	value = temp->value;		// store value of top node in value
 	stack->top = temp->next;	// top to the next node
-	if (stack->top == NULL)
-		stack->bottom = (NULL);	// update bottom if stack empty
 	free(temp);
 	stack->size--;
 	return (value);
@@ -64,11 +62,19 @@ int	pop(t_stack *stack)
 
 void	free_stack(t_stack *stack)
 {
-	// loop until stack is empty
-	while (stack->size > 0)
-		pop(stack);	// remove all nodes
-	free(stack);	// free whole stack structure
+	t_node	*temp;
+
+	if (!stack) // NULL check
+		return ;
+	while (stack->top) // Free all nodes safely
+	{
+		temp = stack->top;
+		stack->top = stack->top->next;
+		free(temp);
+	}
+	free(stack); // Free stack structure
 }
+
 
 int	peek(t_stack *stack)
 {

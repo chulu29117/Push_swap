@@ -6,7 +6,7 @@
 #    By: clu <clu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 20:33:14 by clu               #+#    #+#              #
-#    Updated: 2024/12/26 12:22:45 by clu              ###   ########.fr        #
+#    Updated: 2025/01/07 21:43:36 by clu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,11 @@ PRINTF = $(FT_PRINTF)/libftprintf.a
 SRC = 	src/main.c \
 		src/push_swap.c \
 		src/operations_1.c src/operations_2.c src/operations_3.c \
+		src/input_check.c \
 		src/parsing.c \
 		src/stacks.c \
 		src/sort_small.c \
+		src/sort_large.c \
 		src/debug.c \
 
 OBJ = $(SRC:.c=.o)

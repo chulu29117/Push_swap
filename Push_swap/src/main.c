@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:02 by clu               #+#    #+#             */
-/*   Updated: 2024/12/26 12:41:52 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/07 21:43:18 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,10 @@ int	main(int argc, char **argv)
 			sort_three(stack_a);
 		else if(stack_a->size <= 5)
 			sort_four_five(stack_a, stack_b);
+		else
+			radix_sort(stack_a, stack_b);
 	}
-	
-	// Print initial stacks for debugging
-	ft_printf("Initial Stack A:\n");
-	print_stack(stack_a, "A");
-	ft_printf("Initial Stack B:\n");
-	print_stack(stack_b, "B");
-
+	print_stack(stack_a, "stack_a");
 	// Free memory
 	free_stack(stack_a);
 	free_stack(stack_b);
