@@ -6,13 +6,12 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:11:48 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 10:50:16 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 12:17:42 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Copy stack values into an array
 int	*copy_stack_to_array(t_stack *stack, int size)
 {
 	int		*array;
@@ -32,7 +31,6 @@ int	*copy_stack_to_array(t_stack *stack, int size)
 	return (array);
 }
 
-// Sort the array
 void	sort_array(int	*array, int size)
 {
 	int	i;
@@ -57,7 +55,6 @@ void	sort_array(int	*array, int size)
 	}
 }
 
-// Normalize values in the stack to indices
 void	norm_indices(t_stack *stack_a, int *array, int size)
 {
 	t_node	*current;
@@ -71,8 +68,7 @@ void	norm_indices(t_stack *stack_a, int *array, int size)
 		{
 			if (current->value == array[i])
 			{
-				// ft_printf("Normalizing node with value: %d to index: %d\n", current->value, i);
-				current->value = i;		// replace value with index
+				current->value = i;
 				break ;
 			}
 			i++;
@@ -81,7 +77,6 @@ void	norm_indices(t_stack *stack_a, int *array, int size)
 	}
 }
 
-// Radix sorting method
 void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	max_bits;
@@ -102,9 +97,9 @@ void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 			if (stack_a->top == NULL)
 				break ;
 			if (((stack_a->top->value >> i) & 1) == 0)
-				pb(stack_a, stack_b);	// push to stack_b if 0
+				pb(stack_a, stack_b);
 			else
-				ra(stack_a);			// rotate stack_a if 1
+				ra(stack_a);
 			j++;
 		}
 		while (stack_b->size > 0)

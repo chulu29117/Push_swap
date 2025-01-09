@@ -6,31 +6,28 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:02 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 11:35:29 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 12:13:42 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Check if already sorted
 int	is_sorted(t_stack *stack)
 {
 	t_node	*current;
 
 	if (!stack || !stack->top)
-		return (1); 		// An empty or single-node stack is considered sorted
+		return (1);
 	current = stack->top;
 	while (current && current->next)
 	{
-		// ft_printf("Comparing %d and %d\n", current->value, current->next->value);
 		if (current->value > current->next->value)
-			return (0); 	// Found an unsorted pair
+			return (0);
 		current = current->next;
 	}
-	return (1); 	// No unsorted pairs found
+	return (1);
 }
 
-// Calling different algo to sort
 static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	int	*array;
@@ -59,7 +56,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	if (argc <= 1 || (argc == 2 && !argv[1][0]))
+	if (argc <= 1)
 		return (0);
 	stack_a = init_stack();
 	stack_b = init_stack();
@@ -69,7 +66,6 @@ int	main(int argc, char **argv)
 		handle_error(stack_a, stack_b, NULL, NULL);
 	if (!parse_input(stack_a, argc, argv))
 		handle_error(stack_a, stack_b, NULL, NULL);
-	// print_stack_new(stack_a, "Stack_a");
 	if (is_sorted(stack_a))
 		return (ft_printf("Stack is already sorted.\n"), free_stack(&stack_a), free_stack(&stack_b), 0);
 	sort_stack(stack_a, stack_b);
@@ -77,7 +73,6 @@ int	main(int argc, char **argv)
 		free_stack(&stack_a);
 	if (stack_b)
 		free_stack(&stack_b);
-
 	return (0);
 }
 

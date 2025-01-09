@@ -6,13 +6,12 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:33:04 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 11:13:16 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 12:16:34 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Process split input
 static int	process_split(t_stack *stack, char **split)
 {
 	int		i;
@@ -22,28 +21,26 @@ static int	process_split(t_stack *stack, char **split)
 	i = 0;
 	while (split[i])
 	{
-		if (!is_valid_input(split[i]) || duplicates(stack, ft_atoi(split[i])))	// validate input and check for duplicates
+		if (!is_valid_input(split[i]) || duplicates(stack, ft_atoi(split[i])))
 			return(ft_free_split(split), free_stack(&stack), 0);
 		value = ft_atoi(split[i]);
 		new_node = malloc(sizeof(t_node));
-		if (!new_node) 			// Check memory allocation
+		if (!new_node)
 			return(ft_free_split(split), free_stack(&stack), 0);
-		free(new_node); 		// Temporary allocation check
+		free(new_node);
 		if (!push(stack, value))
     		return(ft_free_split(split), free_stack(&stack), 0);
 		i++;
 	}
-	ft_free_split(split); // Free split after processing
+	ft_free_split(split);
 	return (1);
 }
 
-// Process single arg
 static int	process_arg(t_stack *stack, char *arg)
 {
 	int	value;
 	t_node *new_node;
 
-	// validate single argc
 	if (!is_valid_input(arg) || duplicates(stack, ft_atoi(arg)))
 		return (0);
 	value = ft_atoi(arg);
@@ -54,31 +51,28 @@ static int	process_arg(t_stack *stack, char *arg)
 		exit(1);
 	}
 	free(new_node);
-	if (!push(stack, value))	 // Push value safely
-    	handle_error(stack, NULL, NULL, NULL);	// No unlinked node to free here
-	// ft_printf("Added value: %d to stack\n", value);
+	if (!push(stack, value))
+    	handle_error(stack, NULL, NULL, NULL);
 	return (1);
 }
 
-// Process input with split arguments
 static int	process_split_input(t_stack *stack, char *arg)
 {
 	char	**split;
 
 	split = ft_split(arg, ' ');
-	if (!split) // Allocation failure
+	if (!split)
 		return (0);
-	if (!split[0]) // Empty split
+	if (!split[0])
 	{
 		ft_free_split(split);
 		return (0);
 	}
-	if (!process_split(stack, split)) 	// Process split input
-		return (0); 					// No need for double free, already freed inside
+	if (!process_split(stack, split))
+		return (0);
 	return (1);
 }
 
-// Parse user input argv
 int	parse_input(t_stack *stack, int argc, char **argv)
 {
 	int		i;
@@ -86,13 +80,12 @@ int	parse_input(t_stack *stack, int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		// ft_printf("Parsing argument: %s\n", argv[i]);
-		if (ft_strchr(argv[i], ' ')) // Split input
+		if (ft_strchr(argv[i], ' '))
 		{
 			if (!process_split_input(stack, argv[i]))
 				return (free_stack(&stack), 0);
 		}
-		else // Single input
+		else
 		{
 			if (!process_arg(stack, argv[i]))
 				return (free_stack(&stack), 0);
