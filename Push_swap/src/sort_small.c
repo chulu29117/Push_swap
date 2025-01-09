@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:26:14 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 12:18:27 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 13:13:07 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	sort_two(t_stack *stack_a)
 {
-	if (stack_a->top == NULL)
+	if (stack_a == NULL)
 		return ;
 	if (stack_a->top->value > stack_a->top->next->value)
 		sa(stack_a);
@@ -26,8 +26,7 @@ void	sort_three(t_stack *stack_a)
 	int	second;
 	int	third;
 
-	if (stack_a == NULL || stack_a->top == NULL ||
-		stack_a->top->next == NULL || stack_a->top->next->next == NULL)
+	if (stack_a == NULL)
 		return ;
 	first = stack_a->top->value;
 	second = stack_a->top->next->value;
@@ -79,21 +78,20 @@ int	find_min_index(t_stack *stack_a)
 void	sort_four_five(t_stack *stack_a, t_stack *stack_b)
 {
 	int	min_index;
-	
+
 	if (stack_a == NULL || stack_b == NULL || stack_a->size < 4)
-		return ;	
+		return ;
 	while (stack_a->size > 3)
 	{
 		min_index = find_min_index(stack_a);
 		if (min_index == -1)
 			return ;
-		while ((min_index = find_min_index(stack_a)) > 0)
+		while (min_index > 0)
 		{
 			if (min_index <= stack_a->size / 2)
 				ra(stack_a);
 			else
 				rra(stack_a);
-
 		}
 		if (stack_a->size > 0 && stack_a->top != NULL)
 			pb(stack_a, stack_b);

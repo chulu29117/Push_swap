@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:54:27 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 11:54:54 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 12:46:11 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ long	ft_atol(const char *str)
 		res = res * 10 + (*str - '0');
 		str++;
 	}
-	return (res*sign);
+	return (res * sign);
 }

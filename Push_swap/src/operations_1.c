@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 23:52:52 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 12:14:58 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 15:07:50 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 	t_node	*temp;
 
 	if (!stack_b || !stack_b->top)
-		return ; 
+		return ;
 	temp = stack_b->top;
 	stack_b->top = stack_b->top->next;
 	if (!stack_b->top)

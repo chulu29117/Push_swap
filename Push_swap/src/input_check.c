@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 20:19:29 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 12:13:21 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 15:03:42 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	is_valid_input(const char *arg)
 	}
 	while (arg[i])
 	{
-		if(!ft_isdigit(arg[i]))
+		if (!ft_isdigit(arg[i]))
 			return (0);
 		i++;
 	}

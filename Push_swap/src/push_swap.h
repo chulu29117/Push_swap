@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:51:44 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 12:17:13 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 15:06:48 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,18 @@
 # include <stdlib.h>
 # include <limits.h>
 
-typedef struct s_node{
+typedef struct s_node
+{
 	int				value;
 	struct s_node	*next;
-} t_node;
+}	t_node;
 
-typedef struct s_stack{
+typedef struct s_stack
+{
 	t_node	*top;
 	t_node	*bottom;
 	int		size;
-} t_stack;
+}	t_stack;
 
 // Stack manipulation
 t_stack	*init_stack(void);
@@ -69,10 +71,11 @@ void	norm_indices(t_stack *stack_a, int *array, int size);
 void	radix_sort(t_stack *stack_a, t_stack *stack_b);
 
 // Errors
-void	handle_error(t_stack *stack_a, t_stack *stack_b, int *array, t_node *temp_node);
+void	handle_error(t_stack *stack_a, t_stack *stack_b,
+			int *array, t_node *temp_node);
 
 // Debug
-void	print_stack(t_stack *stack, char *name, int *sorted_array);
-void	print_stack_new(t_stack *stack, char *name);
+// void	print_stack(t_stack *stack, char *name, int *sorted_array);
+// void	print_stack_new(t_stack *stack, char *name);
 
 #endif

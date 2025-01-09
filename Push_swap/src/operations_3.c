@@ -6,11 +6,12 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 23:53:07 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 12:15:52 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 13:13:48 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 void	rra(t_stack *stack_a)
 {
 	t_node	*current;
