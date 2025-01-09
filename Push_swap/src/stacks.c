@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:32:54 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 15:03:18 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 16:25:18 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	free_stack(t_stack **stack)
 {
 	t_node	*temp;
 
-	if (!stack)
+	if (!stack || !*stack)
 		return ;
 	while ((*stack)->top)
 	{

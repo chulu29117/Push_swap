@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:26:14 by clu               #+#    #+#             */
-/*   Updated: 2025/01/07 18:41:34 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 22:27:17 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	sort_three(t_stack *stack_a)
 	int	second;
 	int	third;
 
-	if (stack_a == NULL || stack_a->top == NULL ||
-		stack_a->top->next == NULL || stack_a->top->next->next == NULL)
+	if (stack_a == NULL)
 		return ;
 	first = stack_a->top->value;
 	second = stack_a->top->next->value;

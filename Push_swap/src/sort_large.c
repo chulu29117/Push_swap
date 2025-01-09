@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:11:48 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 15:55:51 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 22:25:30 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	*copy_stack_to_array(t_stack *stack, int size)
 
 	array = malloc(sizeof(int) * size);
 	if (!array)
-		handle_error(stack, NULL, NULL, NULL);
+		return (NULL);
 	current = stack->top;
 	i = 0;
 	while (current)
@@ -100,9 +100,13 @@ void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	max_bits;
 	int	i;
+	int	max_value;
 
+	if (!stack_a || !stack_b || stack_a->size <= 1)
+		return ;
+	max_value = stack_a->size - 1;
 	max_bits = 0;
-	while ((stack_a->size - 1) >> max_bits != 0)
+	while (max_value >> max_bits != 0)
 		max_bits++;
 	i = 0;
 	while (i < max_bits)

@@ -6,7 +6,7 @@
 #    By: clu <clu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 20:33:14 by clu               #+#    #+#              #
-#    Updated: 2025/01/08 14:16:20 by clu              ###   ########.fr        #
+#    Updated: 2025/01/09 22:11:05 by clu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ FT_PRINTF = ft_printf
 LIBFT = $(LIBFT_DIR)/libft.a
 PRINTF = $(FT_PRINTF)/libftprintf.a
 SRC = 	src/main.c \
-		src/push_swap.c \
 		src/operations_1.c src/operations_2.c src/operations_3.c \
 		src/input_check.c \
 		src/parsing.c \

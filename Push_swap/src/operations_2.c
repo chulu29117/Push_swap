@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 23:53:11 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 12:49:21 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 22:17:17 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	rb(t_stack *stack_b)
 		return ;
 	temp = stack_b->top;
 	stack_b->top = stack_b->top->next;
-	stack_b->bottom = temp;
 	temp->next = NULL;
 	stack_b->bottom->next = temp;
 	stack_b->bottom = temp;

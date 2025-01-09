@@ -6,14 +6,14 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:02 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 12:10:19 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 22:15:00 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // Check if already sorted
-int	is_sorted(t_stack *stack)
+static int	is_sorted(t_stack *stack)
 {
 	t_node	*current;
 
@@ -30,28 +30,31 @@ int	is_sorted(t_stack *stack)
 	return (1); 	// No unsorted pairs found
 }
 
-// Calling different algo to sort
-static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
+// helper for sort_large
+static void	sort_large(t_stack *stack_a, t_stack *stack_b)
 {
 	int	*array;
 
-	if(stack_a->size == 2)
+	array = copy_stack_to_array(stack_a, stack_a->size);
+	if (!array)
+		print_error(stack_a, stack_b, NULL, NULL);
+	sort_array(array, stack_a->size);
+	norm_indices(stack_a, array, stack_a->size);
+	radix_sort(stack_a, stack_b);
+	free(array);	
+}
+
+// Calling different algo to sort
+static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
+{
+	if (stack_a->size == 2)
 		sort_two(stack_a);
-	else if(stack_a->size == 3)
+	else if (stack_a->size == 3)
 		sort_three(stack_a);
-	else if(stack_a->size <= 5)
+	else if (stack_a->size <= 5)
 		sort_four_five(stack_a, stack_b);
 	else
-	{
-		array = copy_stack_to_array(stack_a, stack_a->size);
-		if (!array)
-        	handle_error(stack_a, stack_b, NULL, NULL);
-		sort_array(array, stack_a->size);
-		norm_indices(stack_a, array, stack_a->size);
-		radix_sort(stack_a, stack_b);
-		print_stack(stack_a, "Stack_a", array);
-		free(array);
-	}
+		sort_large(stack_a, stack_b);
 }
 
 int	main(int argc, char **argv)
@@ -64,20 +67,17 @@ int	main(int argc, char **argv)
 	stack_a = init_stack();
 	stack_b = init_stack();
 	if (!stack_a || !stack_b)
-		handle_error(stack_a, stack_b, NULL, NULL);
-	if (argc == 1)
-		handle_error(stack_a, stack_b, NULL, NULL);
+		print_error(stack_a, stack_b, NULL, NULL);
 	if (!parse_input(stack_a, argc, argv))
 		handle_error(stack_a, stack_b, NULL, NULL);
-	// print_stack_new(stack_a, "Stack_a");
 	if (is_sorted(stack_a))
-		return (ft_printf("Stack is already sorted.\n"), free_stack(&stack_a), free_stack(&stack_b), 0);
+	{
+		ft_printf("Stack already sorted.\n");
+		return (free_stack(&stack_a), free_stack(&stack_b), 0);
+	}
 	sort_stack(stack_a, stack_b);
-	if (stack_a)
-		free_stack(&stack_a);
-	if (stack_b)
-		free_stack(&stack_b);
-
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }
 

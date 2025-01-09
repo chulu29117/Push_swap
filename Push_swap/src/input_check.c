@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 20:19:29 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 15:03:42 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 17:41:56 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ int	is_valid_input(const char *arg)
 	}
 	value = ft_atol(arg);
 	if (value < INT_MIN || value > INT_MAX)
-	{
-		ft_printf("Error: Invalid INT\n");
-		exit(EXIT_FAILURE);
-	}
+		return (0);
 	return (1);
 }
 
@@ -51,11 +48,24 @@ int	duplicates(t_stack *stack, int value)
 	while (current)
 	{
 		if (current->value == value)
-		{
-			ft_printf("Error: Duplicates\n");
-			exit(EXIT_FAILURE);
-		}
+			return (1);
 		current = current->next;
 	}
 	return (0);
+}
+
+int	is_empty_string(const char *str)
+{
+	int	i;
+
+	if (!str || *str == '\0')
+		return (1);
+	i = 0;
+	while (str[i])
+	{
+		if (!(str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
+			return (0);
+		i++;
+	}
+	return (1);
 }

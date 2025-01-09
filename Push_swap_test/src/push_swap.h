@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:51:44 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 11:17:21 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 22:31:06 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ t_stack	*init_stack(void);
 int		push(t_stack *stack, int value);
 int		*pop(t_stack *stack);
 void	free_stack(t_stack **stack);
-int		peek(t_stack *stack);
 
 // Parsing input arguments
 int		is_valid_input(const char *input);
 int		duplicates(t_stack *stack, int value);
+int		is_empty_string(const char *str);
+int		process_split_input(t_stack *stack, char *arg);
 int		parse_input(t_stack *stack, int argc, char **argv);
 
 // Operations
@@ -70,6 +71,7 @@ void	radix_sort(t_stack *stack_a, t_stack *stack_b);
 
 // Errors
 void	handle_error(t_stack *stack_a, t_stack *stack_b, int *array, t_node *temp_node);
+void	print_error(t_stack *stack_a, t_stack *stack_b, int *array, t_node *temp_node);
 
 void	print_stack(t_stack *stack, char *name, int *sorted_array);
 void	print_stack_new(t_stack *stack, char *name);

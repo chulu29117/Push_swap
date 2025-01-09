@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:32:54 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 12:41:23 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 22:26:28 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	push(t_stack *stack, int value)
 		return (0);
 	new_node->value = value;
 	new_node->next = NULL;
-
 	if (stack->size == 0) // If the stack is empty
 	{
 		stack->top = new_node;
@@ -82,7 +81,7 @@ void	free_stack(t_stack **stack)
 {
 	t_node	*temp;
 
-	if (!stack) 	// NULL check
+	if (!stack || !*stack)
 		return ;
 	while ((*stack)->top) 	// Free all nodes safely
 	{

@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 23:52:52 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 15:07:50 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 21:18:15 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 		return ;
 	temp = stack_a->top;
 	stack_a->top = stack_a->top->next;
-	if (!stack_a->top)
+	if (stack_a->size == 1)
 		stack_a->bottom = NULL;
 	temp->next = stack_b->top;
 	stack_b->top = temp;
