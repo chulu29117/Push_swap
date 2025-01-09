@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:33:04 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 22:20:14 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 23:28:00 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	process_split(t_stack *stack, char **split)
 		if (!push(stack, value))
 		{
 			ft_putstr_fd("Error\n", 2);
-			ft_free_split(split); 
+			ft_free_split(split);
 			free_stack(&stack);
 			return (0);
 		}

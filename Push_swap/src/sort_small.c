@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:26:14 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 13:13:07 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 23:32:06 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	sort_four_five(t_stack *stack_a, t_stack *stack_b)
 		min_index = find_min_index(stack_a);
 		if (min_index == -1)
 			return ;
-		while (min_index > 0)
+		while ((min_index = find_min_index(stack_a)) > 0)
 		{
 			if (min_index <= stack_a->size / 2)
 				ra(stack_a);

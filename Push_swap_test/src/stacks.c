@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:32:54 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 22:26:28 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 23:27:32 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	*pop(t_stack *stack)
 	temp = stack->top;			// save current top node in temp
 	value = malloc(sizeof(int));
 	if (!value)
-		return (free (temp), NULL);
+		return (free(temp), NULL);
 	*value = temp->value;		// store value of top node in value
 	stack->top = temp->next;	// top to the next node
 	free(temp);

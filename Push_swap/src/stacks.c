@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:32:54 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 16:25:18 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 23:27:34 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	*pop(t_stack *stack)
 	temp = stack->top;
 	value = malloc(sizeof(int));
 	if (!value)
-		return (free (temp), NULL);
+		return (free(temp), NULL);
 	*value = temp->value;
 	stack->top = temp->next;
 	free(temp);
