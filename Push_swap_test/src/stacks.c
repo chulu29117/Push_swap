@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:32:54 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 11:30:13 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 12:41:23 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_stack	*init_stack(void)
 {
 	t_stack *stack;
 	
-	stack = ft_calloc(1, sizeof(t_stack));
+	stack = malloc(sizeof(t_stack));
 	if (!stack)
 		return (NULL);
 	stack->top = NULL;
