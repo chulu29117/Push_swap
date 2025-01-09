@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:51:44 by clu               #+#    #+#             */
-/*   Updated: 2025/01/08 13:56:00 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/08 19:11:34 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ typedef struct s_stack{
 
 // Stack manipulation
 t_stack	*init_stack(void);
-void	push(t_stack *stack, int value);
-int		pop(t_stack *stack);
-void	free_stack(t_stack *stack);
+int		push(t_stack *stack, int value);
+int		*pop(t_stack *stack);
+void	free_stack(t_stack **stack);
 int		peek(t_stack *stack);
 
 // Parsing input arguments
@@ -63,13 +63,13 @@ int		find_min_index(t_stack *stack_a);
 void	sort_four_five(t_stack *stack_a, t_stack *stack_b);
 
 // Sorting large
-int	*copy_stack_to_array(t_stack *stack, int size);
+int		*copy_stack_to_array(t_stack *stack, int size);
 void	sort_array(int	*array, int size);
 void	norm_indices(t_stack *stack_a, int *array, int size);
 void	radix_sort(t_stack *stack_a, t_stack *stack_b);
 
 // Errors
-void	handle_error(t_stack *stack_a, t_stack *stack_b, int *array);
+void	handle_error(t_stack *stack_a, t_stack *stack_b, int *array, t_node *temp_node);
 
 void	print_stack(t_stack *stack, char *name);
 

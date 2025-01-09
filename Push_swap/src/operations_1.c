@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 23:52:52 by clu               #+#    #+#             */
-/*   Updated: 2024/12/26 12:45:02 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/08 17:33:24 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sa(t_stack *stack_a)
 	t_node	*first;
 	t_node	*second;
 
-	if (stack_a->size < 2)
+	if (!stack_a || stack_a->size < 2)
 		return ;					// no need to swap if less than 2 elements
 	first = stack_a->top;			// first node
 	second = first->next;			// second node
@@ -34,38 +34,67 @@ void	sa(t_stack *stack_a)
 // Swap first 2 elements at the top of stack_b
 void	sb(t_stack *stack_b)
 {
-	sa(stack_b);
+	t_node	*first;
+	t_node	*second;
+
+	if (!stack_b || stack_b->size < 2)
+		return ;
+	first = stack_b->top;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	stack_b->top = second;
+	if (stack_b->size == 2)
+		stack_b->bottom = first;
 	ft_printf("sb\n");
 }
 
 // Swap first 2 elements at the top for both stack_a&b
 void	ss(t_stack *stack_a, t_stack *stack_b)
 {
-	sa(stack_a);
-	sa(stack_b);
+	if (stack_a && stack_a->size >= 2) // Ensure valid stack_a
+		sa(stack_a);
+	if (stack_b && stack_b->size >= 2) // Ensure valid stack_b
+		sb(stack_b);
 	ft_printf("ss\n");
 }
 
 // Push stack_b top to stack_a top
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
-	int	value;
+	int	*value;
 
-	if (stack_b->size == 0)	// if stack_b is empty
+	if (!stack_a || !stack_b || stack_b->size == 0) // NULL check
 		return ;
 	value = pop(stack_b);	// Remove top stack_b
-	push(stack_a, value);	// Push the value to stack_a
+	if (!value)
+		return ;
+	if (!stack_a->top)
+	{
+		free(value);
+		return ;
+	}
+	push(stack_a, *value);	// Push the value to stack_a
+	free(value);
 	ft_printf("pa\n");
 }
 
 // Push stack_a top to stack_b top
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
-	int	value;
+	int	*value;
 
-	if (stack_a->size == 0)
+	if (!stack_a || !stack_b || stack_a->size == 0) // NULL check
 		return ;
 	value = pop(stack_a);
-	push(stack_b, value);
+	if (!value)
+		return ;
+	if (!stack_b)
+	{
+		free(value);
+		return ;
+	}
+	push(stack_b, *value);
+	free(value);
 	ft_printf("pb\n");
 }

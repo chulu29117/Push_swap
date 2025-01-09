@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:11:48 by clu               #+#    #+#             */
-/*   Updated: 2025/01/08 13:55:23 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/08 19:03:49 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	*copy_stack_to_array(t_stack *stack, int size)
 
 	array = malloc(sizeof(int) * size);
 	if (!array)
-		return (NULL);
+		handle_error(stack, NULL, NULL);
 	current = stack->top;
 	i = 0;
 	while (current)
@@ -98,6 +98,8 @@ void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 		j = 0;
 		while (j < size)
 		{
+			if (stack_a->top == NULL)
+				break ;
 			if (((stack_a->top->value >> i) & 1) == 0)
 				pb(stack_a, stack_b);	// push to stack_b if 0
 			else
@@ -105,7 +107,11 @@ void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 			j++;
 		}
 		while (stack_b->size > 0)
+		{
+			if (stack_b->top == NULL)
+				break ;
 			pa(stack_a, stack_b);
+		}
 		i++;
 	}
 }
@@ -117,4 +123,8 @@ void	sort_large(t_stack *stack_a, t_stack *stack_b)
 	array = copy_stack_to_array(stack_a, stack_a->size);
 	if (!array)
 		handle_error(stack_a, stack_b, NULL);
+	sort_array(array, stack_a->size);
+	norm_indices(stack_a, array, stack_a->size);
+	free(array);
+	radix_sort(stack_a, stack_b);
 }
