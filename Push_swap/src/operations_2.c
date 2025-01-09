@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 23:53:11 by clu               #+#    #+#             */
-/*   Updated: 2025/01/08 16:44:47 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 10:49:58 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,33 @@
 // Shift up all elements of stack_a by 1
 void	ra(t_stack *stack_a)
 {
-	t_node	*old_top;
+	t_node	*temp;
 
 	if (!stack_a || stack_a->size < 2)
 		return ;
-	old_top = stack_a->top;			// Save the top
-	stack_a->top = old_top->next;	// Move next node to top
-	stack_a->bottom = old_top;		// Link the old_top to the bottom
-	old_top->next = NULL;			// Mark the new bottom as tht end
+	temp = stack_a->top;			// Save the top
+	stack_a->top = stack_a->top->next;	// Move next node to top
+	temp->next = NULL;			// Mark the new bottom as tht end
+	stack_a->bottom->next = temp;
+	stack_a->bottom = temp;
+	// ft_printf("ra: rotated node with value: %d\n", temp->value);
 	ft_printf("ra\n");
 }
 
 // Shift up all elements of stack_b by 1
 void	rb(t_stack *stack_b)
 {
-	t_node	*old_top;
+	t_node	*temp;
 
 	if (!stack_b || stack_b->size < 2)
 		return ;
-	old_top = stack_b->top;
-	stack_b->top = old_top->next;
-	stack_b->bottom->next = old_top;
-	stack_b->bottom = old_top;
-	old_top->next = NULL;
+	temp = stack_b->top;
+	stack_b->top = stack_b->top->next;
+	stack_b->bottom = temp;
+	temp->next = NULL;
+	stack_b->bottom->next = temp;
+	stack_b->bottom = temp;
+	// ft_printf("rb: rotated node with value: %d\n", temp->value);
 	ft_printf("rb\n");
 }
 

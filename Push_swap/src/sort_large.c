@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:11:48 by clu               #+#    #+#             */
-/*   Updated: 2025/01/08 19:03:49 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 10:50:16 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	*copy_stack_to_array(t_stack *stack, int size)
 
 	array = malloc(sizeof(int) * size);
 	if (!array)
-		handle_error(stack, NULL, NULL);
+		handle_error(stack, NULL, NULL, NULL);
 	current = stack->top;
 	i = 0;
 	while (current)
@@ -71,6 +71,7 @@ void	norm_indices(t_stack *stack_a, int *array, int size)
 		{
 			if (current->value == array[i])
 			{
+				// ft_printf("Normalizing node with value: %d to index: %d\n", current->value, i);
 				current->value = i;		// replace value with index
 				break ;
 			}
@@ -122,7 +123,7 @@ void	sort_large(t_stack *stack_a, t_stack *stack_b)
 
 	array = copy_stack_to_array(stack_a, stack_a->size);
 	if (!array)
-		handle_error(stack_a, stack_b, NULL);
+		handle_error(stack_a, stack_b, NULL, NULL);
 	sort_array(array, stack_a->size);
 	norm_indices(stack_a, array, stack_a->size);
 	free(array);

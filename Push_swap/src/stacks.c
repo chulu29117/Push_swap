@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:32:54 by clu               #+#    #+#             */
-/*   Updated: 2025/01/08 19:02:56 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 11:30:13 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,33 @@ t_stack	*init_stack(void)
 // Add a value to the stack
 int	push(t_stack *stack, int value)
 {
-	// add new_node with given value to the top
 	t_node *new_node;
+	t_node *current;
 
-	if (!stack)
-		return (0);
 	new_node = (t_node *)malloc(sizeof(t_node));
 	if (!new_node)
 		return (0);
-	new_node->value = value;		// sets the value field of the new_node to the given value
-	new_node->next = stack->top;	// point new_node to the top node
-	stack->top = new_node;			// update top pointer to the new_node
-	if (stack->size == 0)
-		stack->bottom = new_node;	// if stack empty, set bottom to new node
+	new_node->value = value;
+	new_node->next = NULL;
+
+	if (stack->size == 0) // If the stack is empty
+	{
+		stack->top = new_node;
+		stack->bottom = new_node;
+	}
+	else // Add to the bottom
+	{
+		current = stack->bottom;
+		current->next = new_node; // Link the new node to the bottom
+		stack->bottom = new_node; // Update the bottom pointer
+	}
 	stack->size++;
+	// ft_printf("Allocated node with value: %d at address: %p\n", value, (void *)new_node);
+	// ft_printf("Pushed node with value: %d\n", new_node->value);
+	// if (new_node->next)
+		// ft_printf("Node %d points to node %d\n", new_node->value, new_node->next->value);
+	// else
+		// ft_printf("Node %d points to NULL\n", new_node->value);
 	return (1);
 }
 
@@ -57,10 +70,7 @@ int	*pop(t_stack *stack)
 	temp = stack->top;			// save current top node in temp
 	value = malloc(sizeof(int));
 	if (!value)
-	{
-		free(temp);
-		return (NULL);
-	}
+		return (free (temp), NULL);
 	*value = temp->value;		// store value of top node in value
 	stack->top = temp->next;	// top to the next node
 	free(temp);
@@ -72,12 +82,13 @@ void	free_stack(t_stack **stack)
 {
 	t_node	*temp;
 
-	if (!stack || !*stack) 	// NULL check
+	if (!stack) 	// NULL check
 		return ;
 	while ((*stack)->top) 	// Free all nodes safely
 	{
 		temp = (*stack)->top;
 		(*stack)->top = (*stack)->top->next;
+		// ft_printf("Freeing node with value: %d at address: %p\n", temp->value, (void *)temp);
 		free(temp);
 	}
 	free(*stack); 			// Free stack structure

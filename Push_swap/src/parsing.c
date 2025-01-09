@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:33:04 by clu               #+#    #+#             */
-/*   Updated: 2025/01/08 19:13:12 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 11:13:16 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static int	process_arg(t_stack *stack, char *arg)
 	free(new_node);
 	if (!push(stack, value))	 // Push value safely
     	handle_error(stack, NULL, NULL, NULL);	// No unlinked node to free here
+	// ft_printf("Added value: %d to stack\n", value);
 	return (1);
 }
 
@@ -85,6 +86,7 @@ int	parse_input(t_stack *stack, int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
+		// ft_printf("Parsing argument: %s\n", argv[i]);
 		if (ft_strchr(argv[i], ' ')) // Split input
 		{
 			if (!process_split_input(stack, argv[i]))

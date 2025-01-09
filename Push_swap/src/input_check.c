@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 20:19:29 by clu               #+#    #+#             */
-/*   Updated: 2025/01/07 20:19:58 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/09 11:38:38 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 #include <limits.h>
 
 // Check if the input is a valid int
-int	is_valid_input(const char *input)
+int	is_valid_input(const char *arg)
 {
 	int			i;
 	long long	value;
 
-	if (!input || *input == '\0')	// Empty or NULL string
+	if (!arg || *arg == '\0')	// Empty or NULL string
 		return (0);
 	i = 0;
-	if (input[i] == '+' || input[i] == '-')
+	if (arg[i] == '+' || arg[i] == '-')
 	{
 		i++;
-		if (input[i] == '\0')		// Reject '+' or '-' alone
+		if (arg[i] == '\0')		// Reject '+' or '-' alone
 			return (0);
 	}
-	while (input[i])
+	while (arg[i])
 	{
-		if(!ft_isdigit(input[i]))	// Validate digits
+		if(!ft_isdigit(arg[i]))	// Validate digits
 			return (0);
 		i++;
 	}
-	value = ft_atoll(input);
+	value = ft_atoll(arg);
 	if (value < INT_MIN || value > INT_MAX)
 		return (0);
 	return (1);
