@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:02 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 22:28:32 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/10 13:24:15 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ static void	sort_large(t_stack *stack_a, t_stack *stack_b)
 
 	array = copy_stack_to_array(stack_a, stack_a->size);
 	if (!array)
-		print_error(stack_a, stack_b, NULL, NULL);
+	{
+		free(array);
+		print_error(stack_a, stack_b);
+	}
 	sort_array(array, stack_a->size);
 	norm_indices(stack_a, array, stack_a->size);
 	radix_sort(stack_a, stack_b);
@@ -63,9 +66,9 @@ int	main(int argc, char **argv)
 	stack_a = init_stack();
 	stack_b = init_stack();
 	if (!stack_a || !stack_b)
-		print_error(stack_a, stack_b, NULL, NULL);
+		print_error(stack_a, stack_b);
 	if (!parse_input(stack_a, argc, argv))
-		handle_error(stack_a, stack_b, NULL, NULL);
+		print_error(stack_a, stack_b);
 	if (is_sorted(stack_a))
 		return (free_stack(&stack_a), free_stack(&stack_b), 0);
 	sort_stack(stack_a, stack_b);

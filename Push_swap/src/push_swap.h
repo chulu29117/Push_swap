@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:51:44 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 22:31:29 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/10 13:15:53 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,7 @@ void	norm_indices(t_stack *stack_a, int *array, int size);
 void	radix_sort(t_stack *stack_a, t_stack *stack_b);
 
 // Errors
-void	handle_error(t_stack *stack_a, t_stack *stack_b,
-			int *array, t_node *temp_node);
-void	print_error(t_stack *stack_a, t_stack *stack_b,
-			int *array, t_node *temp_node);
+int		handle_error(t_stack *stack_a, t_stack *stack_b);
+void	print_error(t_stack *stack_a, t_stack *stack_b);
 
 #endif
