@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:02 by clu               #+#    #+#             */
-/*   Updated: 2025/01/10 13:24:15 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/10 23:14:43 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,21 @@ static int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-static void	sort_large(t_stack *stack_a, t_stack *stack_b)
-{
-	int	*array;
+// static void	sort_large(t_stack *stack_a, t_stack *stack_b)
+// {
+// 	int	*array;
 
-	array = copy_stack_to_array(stack_a, stack_a->size);
-	if (!array)
-	{
-		free(array);
-		print_error(stack_a, stack_b);
-	}
-	sort_array(array, stack_a->size);
-	norm_indices(stack_a, array, stack_a->size);
-	radix_sort(stack_a, stack_b);
-	free(array);
-}
+// 	array = copy_stack_to_array(stack_a, stack_a->size);
+// 	if (!array)
+// 	{
+// 		free(array);
+// 		print_error(stack_a, stack_b);
+// 	}
+// 	sort_array(array, stack_a->size);
+// 	norm_indices(stack_a, array, stack_a->size);
+// 	radix_sort(stack_a, stack_b);
+// 	free(array);
+// }
 
 static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
@@ -53,7 +53,7 @@ static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 	else if (stack_a->size <= 5)
 		sort_four_five(stack_a, stack_b);
 	else
-		sort_large(stack_a, stack_b);
+		radix_sort(stack_a, stack_b);
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:51:44 by clu               #+#    #+#             */
-/*   Updated: 2025/01/10 13:15:53 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/11 00:08:06 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,11 @@ void	sort_four_five(t_stack *stack_a, t_stack *stack_b);
 
 // Sorting large
 int		*copy_stack_to_array(t_stack *stack, int size);
-void	sort_array(int	*array, int size);
+void	sort_array(int *array, int low, int high);
 void	norm_indices(t_stack *stack_a, int *array, int size);
 void	radix_sort(t_stack *stack_a, t_stack *stack_b);
 
 // Errors
-int		handle_error(t_stack *stack_a, t_stack *stack_b);
 void	print_error(t_stack *stack_a, t_stack *stack_b);
 
 #endif
