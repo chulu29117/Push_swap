@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:26:14 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 23:32:06 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/13 14:36:49 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,24 @@ int	find_min_index(t_stack *stack_a)
 	return (min_index);
 }
 
+static void	move_min_to_top(t_stack *stack_a, int min_index)
+{
+	int	position;
+
+	if (min_index <= stack_a->size / 2)
+	{
+		position = min_index;
+		while (position-- > 0)
+			ra(stack_a);
+	}
+	else
+	{
+		position = stack_a->size - min_index;
+		while (position-- > 0)
+			rra(stack_a);
+	}
+}
+
 void	sort_four_five(t_stack *stack_a, t_stack *stack_b)
 {
 	int	min_index;
@@ -86,17 +104,8 @@ void	sort_four_five(t_stack *stack_a, t_stack *stack_b)
 		min_index = find_min_index(stack_a);
 		if (min_index == -1)
 			return ;
-		while ((min_index = find_min_index(stack_a)) > 0)
-		{
-			if (min_index <= stack_a->size / 2)
-				ra(stack_a);
-			else
-				rra(stack_a);
-		}
-		if (stack_a->size > 0 && stack_a->top != NULL)
-			pb(stack_a, stack_b);
-		else
-			return ;
+		move_min_to_top(stack_a, min_index);
+		pb(stack_a, stack_b);
 	}
 	sort_three(stack_a);
 	while (stack_b->size > 0)

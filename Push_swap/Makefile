@@ -6,7 +6,7 @@
 #    By: clu <clu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 20:33:14 by clu               #+#    #+#              #
-#    Updated: 2025/01/10 23:54:42 by clu              ###   ########.fr        #
+#    Updated: 2025/01/13 22:24:56 by clu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = 	src/main.c \
 		src/stacks.c \
 		src/sort_small.c \
 		src/sort_large.c \
-		src/array_utils.c \
+		src/quick_sort.c \
 		src/errors.c \
 
 OBJ = $(SRC:.c=.o)

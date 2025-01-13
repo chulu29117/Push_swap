@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:51:44 by clu               #+#    #+#             */
-/*   Updated: 2025/01/11 00:08:06 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/13 22:25:10 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_stack	*init_stack(void);
 int		push(t_stack *stack, int value);
 int		*pop(t_stack *stack);
 void	free_stack(t_stack **stack);
+int		is_sorted(t_stack *stack);
 
 // Parsing input arguments
 int		is_valid_input(const char *input);
@@ -66,11 +67,9 @@ int		find_min_index(t_stack *stack_a);
 void	sort_four_five(t_stack *stack_a, t_stack *stack_b);
 
 // Sorting large
-int		*copy_stack_to_array(t_stack *stack, int size);
-void	sort_array(int *array, int low, int high);
-void	norm_indices(t_stack *stack_a, int *array, int size);
+void	quicksort(int *array, int low, int high);
+void	quick_sort(t_stack *stack_a, t_stack *stack_b);
 void	radix_sort(t_stack *stack_a, t_stack *stack_b);
-
 // Errors
 void	print_error(t_stack *stack_a, t_stack *stack_b);
 
