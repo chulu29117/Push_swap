@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:51:44 by clu               #+#    #+#             */
-/*   Updated: 2025/01/14 11:31:47 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/14 12:32:48 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,20 @@ void	rra(t_stack *stack_a);
 void	rrb(t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
 
+// Sorting_utils
+int		find_min_index(t_stack *stack_a);
+void	move_min_to_top(t_stack *stack_a, int min_index);
+int		get_max_bits(t_stack *stack);
+
 // Sorting small 
 void	sort_two(t_stack *stack_a);
 void	sort_three(t_stack *stack_a);
-int		find_min_index(t_stack *stack_a);
-void	move_min_to_top(t_stack *stack_a, int min_index);
 void	sort_four_five(t_stack *stack_a, t_stack *stack_b);
+void	sort_small(t_stack *stack_a, t_stack *stack_b);
 
 // Sorting large
 void	normalize_stack(t_stack *stack_a, int size);
+void	chunk_sort(t_stack *stack_a, t_stack *stack_b, int chunk_size);
 void	radix_sort(t_stack *stack_a, t_stack *stack_b);
 
 // Errors

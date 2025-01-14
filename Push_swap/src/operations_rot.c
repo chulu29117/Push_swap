@@ -1,50 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_2.c                                     :+:      :+:    :+:   */
+/*   operations_rot.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 23:53:11 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 22:17:17 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/14 13:25:41 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_stack *stack_a)
+static void	rotate(t_stack *stack)
 {
 	t_node	*temp;
+	
+	if (!stack || stack->size < 2)
+		return ;
+	temp = stack->top;
+	stack->top = stack->top->next;
+	temp->next = NULL;
+	stack->bottom->next = temp;
+	stack->bottom = temp;	
+}
 
+void	ra(t_stack *stack_a)
+{
 	if (!stack_a || stack_a->size < 2)
 		return ;
-	temp = stack_a->top;
-	stack_a->top = stack_a->top->next;
-	temp->next = NULL;
-	stack_a->bottom->next = temp;
-	stack_a->bottom = temp;
+	rotate(stack_a);
 	ft_printf("ra\n");
 }
 
 void	rb(t_stack *stack_b)
 {
-	t_node	*temp;
-
 	if (!stack_b || stack_b->size < 2)
 		return ;
-	temp = stack_b->top;
-	stack_b->top = stack_b->top->next;
-	temp->next = NULL;
-	stack_b->bottom->next = temp;
-	stack_b->bottom = temp;
+	rotate(stack_b);
 	ft_printf("rb\n");
 }
 
 void	rr(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a && stack_a->size >= 2)
-		ra(stack_a);
+		rotate(stack_a);
 	if (stack_b && stack_b->size >= 2)
-		rb(stack_b);
+		rotate(stack_b);
 	ft_printf("rr\n");
 }

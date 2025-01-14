@@ -1,58 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_3.c                                     :+:      :+:    :+:   */
+/*   operations_rrot.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 23:53:07 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 13:13:48 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/14 13:25:52 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(t_stack *stack_a)
+static void	reverse_rotate(t_stack *stack)
 {
 	t_node	*current;
 	t_node	*old_bottom;
 
+	current = stack->top;
+	while (current->next != stack->bottom)
+		current = current->next;
+	old_bottom = stack->bottom;
+	current->next = NULL;
+	old_bottom->next = stack->top;
+	stack->top = old_bottom;
+	stack->bottom = current;
+}
+
+void	rra(t_stack *stack_a)
+{
 	if (!stack_a || stack_a->size < 2 || !stack_a->bottom)
 		return ;
-	current = stack_a->top;
-	while (current->next != stack_a->bottom)
-		current = current->next;
-	old_bottom = stack_a->bottom;
-	current->next = NULL;
-	old_bottom->next = stack_a->top;
-	stack_a->top = old_bottom;
-	stack_a->bottom = current;
+	reverse_rotate(stack_a);
 	ft_printf("rra\n");
 }
 
 void	rrb(t_stack *stack_b)
 {
-	t_node	*current;
-	t_node	*old_bottom;
-
 	if (!stack_b || stack_b->size < 2)
 		return ;
-	current = stack_b->top;
-	while (current->next != stack_b->bottom)
-		current = current->next;
-	old_bottom = stack_b->bottom;
-	current->next = NULL;
-	old_bottom->next = stack_b->top;
-	stack_b->top = old_bottom;
-	stack_b->bottom = current;
+	reverse_rotate(stack_b);
 	ft_printf("rrb\n");
 }
 
 void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a && stack_a->size >= 2)
-		rra(stack_a);
+		reverse_rotate(stack_a);
 	if (stack_b && stack_b->size >= 2)
-		rrb(stack_b);
+		reverse_rotate(stack_b);
 	ft_printf("rrr\n");
 }

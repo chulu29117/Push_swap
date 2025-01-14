@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:02 by clu               #+#    #+#             */
-/*   Updated: 2025/01/14 11:10:20 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/14 12:25:35 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,8 @@ int	is_sorted(t_stack *stack)
 
 static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
-	if (stack_a->size == 2)
-		sort_two(stack_a);
-	else if (stack_a->size == 3)
-		sort_three(stack_a);
-	else if (stack_a->size <= 5)
-		sort_four_five(stack_a, stack_b);
+	if (stack_a->size <= 5)
+		sort_small(stack_a, stack_b);
 	else
 	{
 		normalize_stack(stack_a, stack_a->size);
