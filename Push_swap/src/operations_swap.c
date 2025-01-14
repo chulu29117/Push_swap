@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 23:52:52 by clu               #+#    #+#             */
-/*   Updated: 2025/01/14 13:25:44 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/14 17:23:35 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,19 @@ void	swap_stack(t_stack *stack)
 
 void	sa(t_stack *stack_a)
 {
-	if (!stack_a || stack_a->size < 2)
-		return ;
 	swap_stack(stack_a);
 	ft_printf("sa\n");
 }
 
 void	sb(t_stack *stack_b)
 {
-	if (!stack_b || stack_b->size < 2)
-		return ;
 	swap_stack(stack_b);
 	ft_printf("sb\n");
 }
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
 {
-	if (stack_a && stack_a->size >= 2)
-		swap_stack(stack_a);
-	if (stack_b && stack_b->size >= 2)
-		swap_stack(stack_b);
+	swap_stack(stack_a);
+	swap_stack(stack_b);
 	ft_printf("ss\n");
 }

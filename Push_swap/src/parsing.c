@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:33:04 by clu               #+#    #+#             */
-/*   Updated: 2025/01/10 13:28:40 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/14 16:18:05 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	process_split_input(t_stack *stack, char *arg)
 	{
 		ft_free_split(split);
 		return (0);
-	}	
+	}
 	return (process_split(stack, split));
 }
 

@@ -6,50 +6,53 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:26:14 by clu               #+#    #+#             */
-/*   Updated: 2025/01/14 12:24:54 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/14 16:17:05 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_two(t_stack *stack_a)
+// Function to sort a stack with two elements
+static void	sort_two(t_stack *stack)
 {
-	if (stack_a == NULL)
+	if (!stack)
 		return ;
-	if (stack_a->top->value > stack_a->top->next->value)
-		sa(stack_a);
+	if (stack->top->value > stack->top->next->value)
+		sa(stack);
 }
 
-void	sort_three(t_stack *stack_a)
+// Function to sort a stack with three elements
+static void	sort_three(t_stack *stack)
 {
 	int	first;
 	int	second;
 	int	third;
 
-	if (stack_a == NULL)
+	if (!stack)
 		return ;
-	first = stack_a->top->value;
-	second = stack_a->top->next->value;
-	third = stack_a->top->next->next->value;
+	first = stack->top->value;
+	second = stack->top->next->value;
+	third = stack->top->next->next->value;
 	if (first > second && second < third && first < third)
-		sa(stack_a);
+		sa(stack);
 	else if (first > second && second < third && first > third)
-		ra(stack_a);
+		ra(stack);
 	else if (first < second && second > third && first < third)
 	{
-		sa(stack_a);
-		ra(stack_a);
+		sa(stack);
+		ra(stack);
 	}
 	else if (first > second && second > third)
 	{
-		sa(stack_a);
-		rra(stack_a);
+		sa(stack);
+		rra(stack);
 	}
 	else if (first < second && second > third && first > third)
-		rra(stack_a);
+		rra(stack);
 }
 
-void	sort_four_five(t_stack *stack_a, t_stack *stack_b)
+// Function to sort a stack with four or five elements
+static void	sort_four_five(t_stack *stack_a, t_stack *stack_b)
 {
 	int	min_index;
 
@@ -68,6 +71,7 @@ void	sort_four_five(t_stack *stack_a, t_stack *stack_b)
 		pa(stack_a, stack_b);
 }
 
+// Choosing which small sort to use
 void	sort_small(t_stack *stack_a, t_stack *stack_b)
 {
 	int	size;

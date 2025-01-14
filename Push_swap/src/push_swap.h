@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:51:44 by clu               #+#    #+#             */
-/*   Updated: 2025/01/14 12:32:48 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/14 17:42:35 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int		parse_input(t_stack *stack, int argc, char **argv);
 void	sa(t_stack *stack_a);
 void	sb(t_stack *stack_b);
 void	ss(t_stack *stack_a, t_stack *stack_b);
+
 void	pa(t_stack *stack_a, t_stack *stack_b);
 void	pb(t_stack *stack_a, t_stack *stack_b);
 
@@ -62,19 +63,20 @@ void	rrr(t_stack *stack_a, t_stack *stack_b);
 
 // Sorting_utils
 int		find_min_index(t_stack *stack_a);
+int		find_max_index(t_stack *stack);
+void	move_max_to_top(t_stack *stack, int max_index);
 void	move_min_to_top(t_stack *stack_a, int min_index);
-int		get_max_bits(t_stack *stack);
 
 // Sorting small 
-void	sort_two(t_stack *stack_a);
-void	sort_three(t_stack *stack_a);
-void	sort_four_five(t_stack *stack_a, t_stack *stack_b);
+// void	sort_two(t_stack *stack_a);
+// void	sort_three(t_stack *stack_a);
+// void	sort_four_five(t_stack *stack_a, t_stack *stack_b);
 void	sort_small(t_stack *stack_a, t_stack *stack_b);
 
 // Sorting large
 void	normalize_stack(t_stack *stack_a, int size);
-void	chunk_sort(t_stack *stack_a, t_stack *stack_b, int chunk_size);
-void	radix_sort(t_stack *stack_a, t_stack *stack_b);
+void	radix_sort(t_stack *stack_a, t_stack *stack_b, int size);
+void	sort_large(t_stack *stack_a, t_stack *stack_b);
 
 // Errors
 void	print_error(t_stack *stack_a, t_stack *stack_b);

@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_sort.c                                       :+:      :+:    :+:   */
+/*   sort_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:32:04 by clu               #+#    #+#             */
-/*   Updated: 2025/01/14 11:06:46 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/14 22:16:38 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Sorts an array of integers using the Quicksort algorithm
 static void	quicksort(int *array, int low, int high)
 {
 	int	pivot;
@@ -38,7 +39,8 @@ static void	quicksort(int *array, int low, int high)
 	quicksort(array, j + 1, high);
 }
 
-static int	*create_array(t_stack *stack_a, int size)
+// Function to create an array from stack values and sort it using quicksort
+static int	*create_array(t_stack *stack, int size)
 {
 	t_node	*current;
 	int		*array;
@@ -47,9 +49,9 @@ static int	*create_array(t_stack *stack_a, int size)
 	array = malloc(sizeof(int) * size);
 	if (!array)
 		return (NULL);
-	current = stack_a->top;
+	current = stack->top;
 	i = 0;
-	while (current)
+	while (i < size)
 	{
 		array[i++] = current->value;
 		current = current->next;
@@ -58,12 +60,13 @@ static int	*create_array(t_stack *stack_a, int size)
 	return (array);
 }
 
-static void	assign_values(t_stack *stack_a, int *array, int size)
+// Function to assign normalized values to the stack based on sorted order
+static void	assign_values(t_stack *stack, int *array, int size)
 {
 	t_node	*current;
 	int		i;
 
-	current = stack_a->top;
+	current = stack->top;
 	while (current)
 	{
 		i = 0;
@@ -80,13 +83,14 @@ static void	assign_values(t_stack *stack_a, int *array, int size)
 	}
 }
 
-void	normalize_stack(t_stack *stack_a, int size)
+// Normalizes the stack values into a range of [0, size - 1]
+void	normalize_stack(t_stack *stack, int size)
 {
 	int	*array;
 
-	array = create_array(stack_a, size);
+	array = create_array(stack, size);
 	if (!array)
 		return ;
-	assign_values(stack_a, array, size);
+	assign_values(stack, array, size);
 	free(array);
 }

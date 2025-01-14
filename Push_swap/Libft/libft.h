@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:03:13 by clu               #+#    #+#             */
-/*   Updated: 2025/01/13 21:25:26 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/14 22:01:17 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void		*ft_memmove(void *dest, const void *src, size_t n);
 void		*ft_memchr(const void *s, int c, size_t n);
 void		*ft_calloc(size_t nmemb, size_t size);
 void		ft_putchar_fd(char c, int fd);
-void		ft_putstr_fd(char *s, int fd);
+void		ft_putstr_fd(const char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
