@@ -6,99 +6,87 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:32:04 by clu               #+#    #+#             */
-/*   Updated: 2025/01/13 22:16:17 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/14 11:06:46 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// partition:
-// Selects a pivot (the last element in the range).
-// Rearranges the array so that elements smaller than the pivot are on its left, and larger elements are on its right.
-int	partition(int *array, int low, int high)
+static void	quicksort(int *array, int low, int high)
 {
 	int	pivot;
 	int	i;
 	int	j;
 
-	pivot = array[high];
-	i = low - 1;
-	j = low;
-	while (j < high)
+	if (low >= high)
+		return ;
+	pivot = array[low];
+	i = low;
+	j = high;
+	while (i < j)
 	{
-		if (array[j] < pivot)
-		{
+		while (array[j] > pivot)
+			j--;
+		while (i < j && array[i] <= pivot)
 			i++;
+		if (i < j)
 			ft_swap(&array[i], &array[j]);
-		}
-		j++;
 	}
-	ft_swap(&array[i + 1], &array[high]);
-	return (i + 1);
+	array[low] = array[j];
+	array[j] = pivot;
+	quicksort(array, low, j - 1);
+	quicksort(array, j + 1, high);
 }
 
-// Recursively sorts the partitions created by the partition function.
-void	quicksort(int *array, int low, int high)
-{
-	int	pivot_index;
-	
-	if (low < high)
-	{
-		pivot_index = partition(array, low, high);
-		quicksort(array, low, pivot_index - 1);
-		quicksort(array, pivot_index + 1, high);
-	}
-}
-
-static void	partition_stack(t_stack *stack_a, t_stack *stack_b, int pivot)
+static int	*create_array(t_stack *stack_a, int size)
 {
 	t_node	*current;
-	int		size;
+	int		*array;
 	int		i;
 
-	size = stack_a->size;
-	i = 0;
-	while (i < size)
-	{
-		current = stack_a->top;
-		if (current->value < pivot)
-			pb(stack_a, stack_b);
-		else
-			ra(stack_a);
-		i++;
-	}
-}
-
-static int	find_median(t_stack *stack)
-{
-	t_node	*current;
-	int		*values;
-	int		i;
-	int		median;
-
-	values = malloc(sizeof(int) * stack->size);
-	if (!values)
-		return (-1);
-	current = stack->top;
+	array = malloc(sizeof(int) * size);
+	if (!array)
+		return (NULL);
+	current = stack_a->top;
 	i = 0;
 	while (current)
 	{
-		values[i++] = current->value;
+		array[i++] = current->value;
 		current = current->next;
 	}
-	quicksort(values, 0, stack->size - 1);
-	median = values[stack->size / 2];
-	free(values);
-	return (median);
+	quicksort(array, 0, size - 1);
+	return (array);
 }
 
-void	quick_sort(t_stack *stack_a, t_stack *stack_b)
+static void	assign_values(t_stack *stack_a, int *array, int size)
 {
-	int	median;
+	t_node	*current;
+	int		i;
 
-	median = find_median(stack_a);
-	partition_stack(stack_a, stack_b, median);
-	quick_sort(stack_a, stack_b);
-	while (stack_b->size > 0)
-		pa(stack_a, stack_b);
+	current = stack_a->top;
+	while (current)
+	{
+		i = 0;
+		while (i < size)
+		{
+			if (current->value == array[i])
+			{
+				current->value = i;
+				break ;
+			}
+			i++;
+		}
+		current = current->next;
+	}
+}
+
+void	normalize_stack(t_stack *stack_a, int size)
+{
+	int	*array;
+
+	array = create_array(stack_a, size);
+	if (!array)
+		return ;
+	assign_values(stack_a, array, size);
+	free(array);
 }

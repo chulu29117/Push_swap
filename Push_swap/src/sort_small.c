@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:26:14 by clu               #+#    #+#             */
-/*   Updated: 2025/01/13 14:36:49 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/14 11:31:30 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	find_min_index(t_stack *stack_a)
 	int		min_index;
 	int		min;
 
-	if (stack_a->top == NULL)
+	if (!stack_a || !stack_a->top)
 		return (-1);
 	current = stack_a->top;
 	min = current->value;
@@ -75,20 +75,19 @@ int	find_min_index(t_stack *stack_a)
 	return (min_index);
 }
 
-static void	move_min_to_top(t_stack *stack_a, int min_index)
+void	move_min_to_top(t_stack *stack_a, int min_index)
 {
-	int	position;
-
+	if (min_index == 0)
+		return ;
 	if (min_index <= stack_a->size / 2)
 	{
-		position = min_index;
-		while (position-- > 0)
+		while (min_index-- > 0)
 			ra(stack_a);
 	}
 	else
 	{
-		position = stack_a->size - min_index;
-		while (position-- > 0)
+		min_index = stack_a->size - min_index;
+		while (min_index-- > 0)
 			rra(stack_a);
 	}
 }
@@ -97,7 +96,7 @@ void	sort_four_five(t_stack *stack_a, t_stack *stack_b)
 {
 	int	min_index;
 
-	if (stack_a == NULL || stack_b == NULL || stack_a->size < 4)
+	if (!stack_a || !stack_b || stack_a->size < 4)
 		return ;
 	while (stack_a->size > 3)
 	{

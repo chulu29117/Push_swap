@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:02 by clu               #+#    #+#             */
-/*   Updated: 2025/01/13 22:25:34 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/14 11:10:20 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,11 @@ static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 		sort_three(stack_a);
 	else if (stack_a->size <= 5)
 		sort_four_five(stack_a, stack_b);
-	else if (stack_a->size <= 100)
-		quick_sort(stack_a, stack_b);
 	else
+	{
+		normalize_stack(stack_a, stack_a->size);
 		radix_sort(stack_a, stack_b);
+	}
 }
 
 int	main(int argc, char **argv)
