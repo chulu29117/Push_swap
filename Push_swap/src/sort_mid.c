@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:12:38 by clu               #+#    #+#             */
-/*   Updated: 2025/01/15 13:25:28 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/15 14:28:07 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,18 @@ void	sort_mid(t_stack *stack_a, t_stack *stack_b, int size)
 	int	min_chunk;
 	int	max_chunk;
 	int	i;
+	int num_chunks;
 
-	chunk_size = size / 5;
+	num_chunks = 5;
+	chunk_size = size / num_chunks;
 	i = 0;
-	while (i < 5)
+	while (i < num_chunks)
 	{
 		min_chunk = i * chunk_size;
-		max_chunk = (i + 1) * chunk_size - 1;
+		if (i == num_chunks - 1)
+			max_chunk = size - 1;
+		else
+			max_chunk = (i + 1) * chunk_size - 1;
 		push_chunk_to_b(stack_a, stack_b, min_chunk, max_chunk);
 		i++;
 	}
