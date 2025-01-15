@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:32:04 by clu               #+#    #+#             */
-/*   Updated: 2025/01/15 10:02:25 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/15 13:02:25 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	bubble_sort(int *array, int size)
 			j++;
 		}
 		if (!swapped)
-			break;
+			break ;
 		i++;
 	}
 }

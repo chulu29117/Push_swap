@@ -6,17 +6,18 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:11:48 by clu               #+#    #+#             */
-/*   Updated: 2025/01/15 10:07:22 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/15 13:07:51 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-int get_max_bits(t_stack *stack)
+
+int	get_max_bits(t_stack *stack)
 {
 	int		max_value;
 	int		max_bits;
 	t_node	*current;
-	
+
 	max_value = 0;
 	max_bits = 0;
 	current = stack->top;
@@ -28,16 +29,18 @@ int get_max_bits(t_stack *stack)
 	}
 	while (max_value >> max_bits)
 		max_bits++;
-	return max_bits;
+	return (max_bits);
 }
 
 // Process the current bit of the numbers in the stack
-void process_bit(t_stack *stack_a, t_stack *stack_b, int bit_position, int size)
+static void	process_bit(t_stack *stack_a, t_stack *stack_b, int bit_position)
 {
 	int	j;
 	int	pushed;
 	int	current;
+	int	size;
 
+	size = stack_a->size;
 	j = 0;
 	pushed = 0;
 	while (j < size)
@@ -57,7 +60,7 @@ void process_bit(t_stack *stack_a, t_stack *stack_b, int bit_position, int size)
 }
 
 // Radix sort algorithm
-void radix_sort(t_stack *stack_a, t_stack *stack_b, int size)
+void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	max_bits;
 	int	i;
@@ -66,7 +69,7 @@ void radix_sort(t_stack *stack_a, t_stack *stack_b, int size)
 	i = 0;
 	while (i < max_bits)
 	{
-		process_bit(stack_a, stack_b, i, size);
+		process_bit(stack_a, stack_b, i);
 		i++;
 	}
 }
@@ -75,5 +78,5 @@ void radix_sort(t_stack *stack_a, t_stack *stack_b, int size)
 void	sort_large(t_stack *stack_a, t_stack *stack_b)
 {
 	normalize_stack(stack_a, stack_a->size);
-	radix_sort(stack_a, stack_b, stack_a->size);
+	radix_sort(stack_a, stack_b);
 }

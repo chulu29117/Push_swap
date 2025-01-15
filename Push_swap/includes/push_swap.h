@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:51:44 by clu               #+#    #+#             */
-/*   Updated: 2025/01/15 10:23:19 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/15 13:22:16 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ void	sort_mid(t_stack *stack_a, t_stack *stack_b, int size);
 
 // Sorting large
 void	normalize_stack(t_stack *stack_a, int size);
-void	radix_sort(t_stack *stack_a, t_stack *stack_b, int size);
+void	radix_sort(t_stack *stack_a, t_stack *stack_b);
 void	sort_large(t_stack *stack_a, t_stack *stack_b);
 
 // Errors
-void	print_error(t_stack *stack_a, t_stack *stack_b);
+void	put_error(t_stack *stack_a, t_stack *stack_b);
 
 #endif

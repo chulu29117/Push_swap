@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:12:38 by clu               #+#    #+#             */
-/*   Updated: 2025/01/15 11:37:48 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/15 13:25:28 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	rot_to_top(t_stack *stack, int index, char stack_name)
 {
 	int	size;
 	int	count;
-	
+
 	size = stack->size;
 	if (index == 0)
 		return ;
@@ -55,25 +55,26 @@ static void	rot_to_top(t_stack *stack, int index, char stack_name)
 }
 
 // Push chunks of values from stack_a to stack_b
-static void	push_chunk_to_b(t_stack *stack_a, t_stack *stack_b, int min_chunk, int max_chunk)
+static void	push_chunk_to_b(t_stack *a, t_stack *b, int min, int max)
 {
 	int	size;
-	int	j = 0;
+	int	j;
 	int	top;
 
-	size = stack_a->size;
+	j = 0;
+	size = a->size;
 	while (j < size)
 	{
-		top = stack_a->top->value;
-		if (top >= min_chunk && top <= max_chunk)
-			pb(stack_a, stack_b);
+		top = a->top->value;
+		if (top >= min && top <= max)
+			pb(a, b);
 		else
-			ra(stack_a);
+			ra(a);
 		j++;
 	}
 }
 
-// Sort the stacks in chunks of 5 for input size less than 100
+// Sort the stacks in chunks of 5 values
 void	sort_mid(t_stack *stack_a, t_stack *stack_b, int size)
 {
 	int	chunk_size;

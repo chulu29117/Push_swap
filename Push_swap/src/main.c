@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:02 by clu               #+#    #+#             */
-/*   Updated: 2025/01/15 12:02:05 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/15 13:24:15 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int	main(int argc, char **argv)
 	stack_a = init_stack();
 	stack_b = init_stack();
 	if (!stack_a || !stack_b)
-		print_error(stack_a, stack_b);
+		put_error(stack_a, stack_b);
 	if (!parse_input(stack_a, argc, argv))
-		print_error(stack_a, stack_b);
+		put_error(stack_a, stack_b);
 	if (is_sorted(stack_a))
 		return (free_stack(&stack_a), free_stack(&stack_b), 0);
 	sort_stack(stack_a, stack_b);
