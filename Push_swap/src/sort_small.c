@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:26:14 by clu               #+#    #+#             */
-/*   Updated: 2025/01/14 16:17:05 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/15 11:31:36 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,12 @@ void	sort_small(t_stack *stack_a, t_stack *stack_b)
 	int	size;
 
 	size = stack_a->size;
-	if (size == 2)
+	if (!stack_a || !stack_b || size < 2)
+		return ;
+	else if (size == 2)
 		sort_two(stack_a);
 	else if (size == 3)
 		sort_three(stack_a);
-	else if (size <= 5)
+	else
 		sort_four_five(stack_a, stack_b);
 }

@@ -6,7 +6,7 @@
 #    By: clu <clu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 20:33:14 by clu               #+#    #+#              #
-#    Updated: 2025/01/14 16:29:35 by clu              ###   ########.fr        #
+#    Updated: 2025/01/15 11:57:00 by clu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,19 +28,22 @@ SRC = 	src/main.c \
 		src/stacks.c \
 		src/sort_utils.c \
 		src/sort_small.c \
+		src/sort_mid.c \
 		src/sort_large.c \
 		src/sort_array.c \
 		src/errors.c \
 
-OBJ = $(SRC:.c=.o)
+OBJ_DIR = obj
+OBJ = $(SRC:src/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(PRINTF)
 	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT_DIR) -lft -L$(FT_PRINTF) -lftprintf -o $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -I$(FT_PRINTF) -c $< -o $@
+$(OBJ_DIR)/%.o: src/%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -Iincludes -I$(LIBFT_DIR) -I$(FT_PRINTF) -c $< -o $@
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
@@ -51,7 +54,7 @@ $(PRINTF):
 clean:
 	make -C $(LIBFT_DIR) clean
 	make -C $(FT_PRINTF) clean
-	rm -f $(OBJ)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	make -C $(LIBFT_DIR) fclean

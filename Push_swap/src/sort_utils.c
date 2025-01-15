@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:18:47 by clu               #+#    #+#             */
-/*   Updated: 2025/01/14 15:55:15 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/15 11:41:19 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ void	move_min_to_top(t_stack *stack, int min_index)
 	}
 	else
 	{
-		min_index = stack->size - min_index;
-		while (min_index-- > 0)
+		while (min_index++ < stack->size)
 			rra(stack);
 	}
 }
@@ -83,6 +82,8 @@ int	find_max_index(t_stack *stack)
 
 void	move_max_to_top(t_stack *stack, int max_index)
 {
+	if (max_index == 0)
+		return ;
 	if (max_index <= stack->size / 2)
 	{
 		while (max_index-- > 0)
@@ -90,8 +91,7 @@ void	move_max_to_top(t_stack *stack, int max_index)
 	}
 	else
 	{
-		max_index = stack->size - max_index;
-		while (max_index-- > 0)
+		while (max_index++ < stack->size)
 			rra(stack);
 	}
 }

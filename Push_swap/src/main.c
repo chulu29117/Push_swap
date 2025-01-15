@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:02 by clu               #+#    #+#             */
-/*   Updated: 2025/01/14 16:50:40 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/15 11:43:50 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ int	is_sorted(t_stack *stack)
 
 static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
+	normalize_stack(stack_a, stack_a->size);
 	if (stack_a->size <= 5)
 		sort_small(stack_a, stack_b);
+	else if (stack_a->size <= 100)
+		sort_mid(stack_a, stack_b, stack_a->size);
 	else
 		sort_large(stack_a, stack_b);
 }

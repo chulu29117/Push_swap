@@ -6,40 +6,43 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:32:04 by clu               #+#    #+#             */
-/*   Updated: 2025/01/14 22:16:38 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/15 10:02:25 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Sorts an array of integers using the Quicksort algorithm
-static void	quicksort(int *array, int low, int high)
+// Function to sort an array using bubble sort
+static void	bubble_sort(int *array, int size)
 {
-	int	pivot;
 	int	i;
 	int	j;
+	int	temp;
+	int	swapped;
 
-	if (low >= high)
-		return ;
-	pivot = array[low];
-	i = low;
-	j = high;
-	while (i < j)
+	i = 0;
+	while (i < size - 1)
 	{
-		while (array[j] > pivot)
-			j--;
-		while (i < j && array[i] <= pivot)
-			i++;
-		if (i < j)
-			ft_swap(&array[i], &array[j]);
+		swapped = 0;
+		j = 0;
+		while (j < size - i - 1)
+		{
+			if (array[j] > array[j + 1])
+			{
+				temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+				swapped = 1;
+			}
+			j++;
+		}
+		if (!swapped)
+			break;
+		i++;
 	}
-	array[low] = array[j];
-	array[j] = pivot;
-	quicksort(array, low, j - 1);
-	quicksort(array, j + 1, high);
 }
 
-// Function to create an array from stack values and sort it using quicksort
+// Function to create an array from stack values and sort it using bubble sort
 static int	*create_array(t_stack *stack, int size)
 {
 	t_node	*current;
@@ -56,7 +59,7 @@ static int	*create_array(t_stack *stack, int size)
 		array[i++] = current->value;
 		current = current->next;
 	}
-	quicksort(array, 0, size - 1);
+	bubble_sort(array, size);
 	return (array);
 }
 

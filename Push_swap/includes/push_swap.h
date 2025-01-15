@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:51:44 by clu               #+#    #+#             */
-/*   Updated: 2025/01/14 17:42:35 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/15 10:23:19 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ void	move_max_to_top(t_stack *stack, int max_index);
 void	move_min_to_top(t_stack *stack_a, int min_index);
 
 // Sorting small 
-// void	sort_two(t_stack *stack_a);
-// void	sort_three(t_stack *stack_a);
-// void	sort_four_five(t_stack *stack_a, t_stack *stack_b);
 void	sort_small(t_stack *stack_a, t_stack *stack_b);
+
+// Sorting mid
+void	sort_mid(t_stack *stack_a, t_stack *stack_b, int size);
 
 // Sorting large
 void	normalize_stack(t_stack *stack_a, int size);
