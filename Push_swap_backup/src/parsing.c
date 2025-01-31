@@ -6,12 +6,17 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:33:04 by clu               #+#    #+#             */
-/*   Updated: 2025/01/31 10:33:22 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 10:50:27 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Process a space-separated input string
+// Split the string into an array of strings
+// Check if the input is valid and if there are duplicates
+// Convert the string to an integer and push it to the stack
+// Free the split array	and return 1 if successful
 static int	process_split(t_stack *stack, char **split)
 {
 	int		i;
@@ -37,6 +42,11 @@ static int	process_split(t_stack *stack, char **split)
 	return (1);
 }
 
+// Process a space-separated input string in argument
+// Check if the input is an empty string
+// Split the string into an array of strings
+// Return 0 if the split array is empty
+// Return the result of process_split
 int	process_split_input(t_stack *stack, char *arg)
 {
 	char	**split;
@@ -52,6 +62,10 @@ int	process_split_input(t_stack *stack, char *arg)
 	return (process_split(stack, split));
 }
 
+// Process a single argument
+// Check if the input is valid and if there are duplicates
+// Convert the string to an integer and push it to the stack
+// Return 1 if successful
 static int	process_arg(t_stack *stack, char *arg)
 {
 	int		value;
@@ -64,6 +78,12 @@ static int	process_arg(t_stack *stack, char *arg)
 	return (1);
 }
 
+// Parse the input arguments
+// Loop through the arguments skipping the program name
+// Check if the argument contains a space
+// Call process_split_input if it does
+// Call process_arg if it doesn't
+// Return 1 if successful
 int	parse_input(t_stack *stack, int argc, char **argv)
 {
 	int		i;
