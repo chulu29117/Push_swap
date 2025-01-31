@@ -6,12 +6,13 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:32:54 by clu               #+#    #+#             */
-/*   Updated: 2025/01/13 20:50:44 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 16:18:24 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Initialize a new stack
 t_stack	*init_stack(void)
 {
 	t_stack	*stack;
@@ -25,6 +26,11 @@ t_stack	*init_stack(void)
 	return (stack);
 }
 
+// Push a new value to the stack
+// Create a new node and assign the value
+// If the stack is empty, assign the new node to top and bottom
+// If the stack is not empty, assign the new node to the bottom
+// Increase the size of the stack
 int	push(t_stack *stack, int value)
 {
 	t_node	*new_node;
@@ -50,6 +56,10 @@ int	push(t_stack *stack, int value)
 	return (1);
 }
 
+// Pop the top value from the stack
+// Create a new node and assign the value
+// Assign the next node to the top
+// Decrease the size of the stack
 int	*pop(t_stack *stack)
 {
 	t_node	*temp;
@@ -68,6 +78,9 @@ int	*pop(t_stack *stack)
 	return (value);
 }
 
+// Free the stack and all nodes
+// Loop through the stack and free each node
+// Free the stack
 void	free_stack(t_stack **stack)
 {
 	t_node	*temp;

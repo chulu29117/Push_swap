@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:02 by clu               #+#    #+#             */
-/*   Updated: 2025/01/31 10:58:31 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 16:14:04 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 // Check if the stack is already sorted
 // Free the stacks if the stack is sorted
 // Sort the stack
-// Free the stacks
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -67,7 +66,11 @@ int	main(int argc, char **argv)
 	if (!parse_input(stack_a, argc, argv))
 		put_error(stack_a, stack_b);
 	if (is_sorted(stack_a))
-		return (free_stack(&stack_a), free_stack(&stack_b), 0);
+	{
+		free_stack(&stack_a);
+		free_stack(&stack_b);
+		return (0);
+	}
 	sort_stack(stack_a, stack_b);
 	free_stack(&stack_a);
 	free_stack(&stack_b);

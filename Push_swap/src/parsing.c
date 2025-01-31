@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:33:04 by clu               #+#    #+#             */
-/*   Updated: 2025/01/31 10:47:43 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 14:52:48 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,12 @@ static int	process_arg(t_stack *stack, char *arg)
 	return (1);
 }
 
+// Parse the input arguments
+// Loop through the arguments skipping the program name
+// Check if the argument contains a space
+// Call process_split_input if it does
+// Call process_arg if it doesn't
+// Return 1 if successful
 int	parse_input(t_stack *stack, int argc, char **argv)
 {
 	int		i;

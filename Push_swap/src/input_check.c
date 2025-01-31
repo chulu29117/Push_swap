@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 20:19:29 by clu               #+#    #+#             */
-/*   Updated: 2025/01/09 17:41:56 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 14:54:04 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <limits.h>
 
 // Check if the input is a valid int
+// Using ft_atol to convert the string to a long int
+// Check if the value is within the range of an int
 int	is_valid_input(const char *arg)
 {
 	int		i;
@@ -40,6 +42,7 @@ int	is_valid_input(const char *arg)
 	return (1);
 }
 
+// Check if the stack contains a duplicate compared to "value"
 int	duplicates(t_stack *stack, int value)
 {
 	t_node	*current;
@@ -54,6 +57,7 @@ int	duplicates(t_stack *stack, int value)
 	return (0);
 }
 
+// Check if the input is an empty string
 int	is_empty_string(const char *str)
 {
 	int	i;

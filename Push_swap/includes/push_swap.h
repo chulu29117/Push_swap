@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:51:44 by clu               #+#    #+#             */
-/*   Updated: 2025/01/15 13:22:16 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 16:20:31 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 # include <stdlib.h>
 # include <limits.h>
 
+// Struct for the stack values and the next node
 typedef struct s_node
 {
 	int				value;
 	struct s_node	*next;
 }	t_node;
 
+// Struct for the stack with top, bottom and size
 typedef struct s_stack
 {
 	t_node	*top;
@@ -46,17 +48,21 @@ int		process_split_input(t_stack *stack, char *arg);
 int		parse_input(t_stack *stack, int argc, char **argv);
 
 // Operations
+// Swap operations
 void	sa(t_stack *stack_a);
 void	sb(t_stack *stack_b);
 void	ss(t_stack *stack_a, t_stack *stack_b);
 
+// Push operations
 void	pa(t_stack *stack_a, t_stack *stack_b);
 void	pb(t_stack *stack_a, t_stack *stack_b);
 
+// Rotate operations
 void	ra(t_stack *stack_a);
 void	rb(t_stack *stack_b);
 void	rr(t_stack *stack_a, t_stack *stack_b);
 
+// Reverse rotate operations
 void	rra(t_stack *stack_a);
 void	rrb(t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);

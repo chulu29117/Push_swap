@@ -6,13 +6,13 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:11:48 by clu               #+#    #+#             */
-/*   Updated: 2025/01/31 12:04:56 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 14:55:17 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Get the maximum number of bits needed to represent the largest number in the stack
+// Get the maximum number of bits needed to represent the largest number
 // Loop through the stack and find the largest number
 // Calculate the number of bits needed to represent the largest number
 int	get_max_bits(t_stack *stack)

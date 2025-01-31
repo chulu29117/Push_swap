@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:12:38 by clu               #+#    #+#             */
-/*   Updated: 2025/01/31 13:31:10 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 14:55:39 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ void	sort_mid(t_stack *stack_a, t_stack *stack_b, int size)
 
 // Sort the stacks in chunks of 5 values
 // Loop through the chunks and push the chunk to stack B
-// Find the max value in stack B and rotate stack B to bring the max value to the top
+// Find the max value in stack B and rotate stack B to bring the max to the top
 // Push the max value to stack A
 // Repeat until stack B is empty
 // void	sort_mid(t_stack *stack_a, t_stack *stack_b, int size)

@@ -6,12 +6,15 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:18:47 by clu               #+#    #+#             */
-/*   Updated: 2025/01/15 11:41:19 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 16:17:22 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Find the index of the minimum value in the stack
+// Loop through the stack and find the smallest number
+// Return the index of the smallest number
 int	find_min_index(t_stack *stack)
 {
 	t_node	*current;
@@ -38,6 +41,9 @@ int	find_min_index(t_stack *stack)
 	return (min_index);
 }
 
+// Move the minimum value to the top of the stack
+// If the index is less than half the size of the stack, rotate forward
+// If the index is more than half the size of the stack, reverse rotate
 void	move_min_to_top(t_stack *stack, int min_index)
 {
 	if (min_index == 0)
@@ -54,6 +60,9 @@ void	move_min_to_top(t_stack *stack, int min_index)
 	}
 }
 
+// Find the index of the maximum value in the stack
+// Loop through the stack and find the largest number
+// Return the index of the largest number
 int	find_max_index(t_stack *stack)
 {
 	t_node	*current;
@@ -80,6 +89,9 @@ int	find_max_index(t_stack *stack)
 	return (max_index);
 }
 
+// Move the maximum value to the top of the stack
+// If the index is less than half the size of the stack, rotate forward
+// If the index is more than half the size of the stack, reverse rotate
 void	move_max_to_top(t_stack *stack, int max_index)
 {
 	if (max_index == 0)

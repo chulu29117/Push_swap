@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:12:38 by clu               #+#    #+#             */
-/*   Updated: 2025/01/31 13:28:58 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 16:08:57 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ static void	rot_to_top(t_stack *stack, int index, char stack_name)
 }
 
 // Push chunks of values from stack_a to stack_b
+// If the value is within the range of min and max, push to stack B
+// Otherwise, rotate stack A
 static void	push_chunk_to_b(t_stack *a, t_stack *b, int min, int max)
 {
 	int	size;

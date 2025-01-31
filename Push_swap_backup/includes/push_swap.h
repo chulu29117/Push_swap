@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:51:44 by clu               #+#    #+#             */
-/*   Updated: 2025/01/31 12:58:11 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 16:20:08 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 # include <stdlib.h>
 # include <limits.h>
 
+// Struct for the stack values and the next node
 typedef struct s_node
 {
 	int				value;
 	struct s_node	*next;
 }	t_node;
 
+// Struct for the stack with top, bottom and size
 typedef struct s_stack
 {
 	t_node	*top;

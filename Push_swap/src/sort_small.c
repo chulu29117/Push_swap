@@ -6,13 +6,14 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:26:14 by clu               #+#    #+#             */
-/*   Updated: 2025/01/15 11:31:36 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 16:13:09 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // Function to sort a stack with two elements
+// If the first element is larger than the second, swap them
 static void	sort_two(t_stack *stack)
 {
 	if (!stack)
@@ -52,6 +53,11 @@ static void	sort_three(t_stack *stack)
 }
 
 // Function to sort a stack with four or five elements
+// Find the index of the smallest number in the stack
+// Move the smallest number to the top of the stack
+// Push the smallest number to stack B
+// Sort the remaining three numbers
+// Push the numbers back to stack A
 static void	sort_four_five(t_stack *stack_a, t_stack *stack_b)
 {
 	int	min_index;
