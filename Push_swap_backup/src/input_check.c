@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 20:19:29 by clu               #+#    #+#             */
-/*   Updated: 2025/01/31 10:56:12 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 13:32:46 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <limits.h>
 
 // Check if the input is a valid int
+// Using ft_atol to convert the string to a long int
+// Check if the value is within the range of an int
 int	is_valid_input(const char *arg)
 {
 	int		i;
