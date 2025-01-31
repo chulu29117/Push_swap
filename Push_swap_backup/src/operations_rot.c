@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 23:53:11 by clu               #+#    #+#             */
-/*   Updated: 2025/01/31 11:57:12 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 12:35:45 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static void	rotate(t_stack *stack)
 	stack->bottom = temp;
 }
 
-// Rotate the first element of stack A
+// Rotate the first element of stack A to the bottom
 void	ra(t_stack *stack_a)
 {
 	rotate(stack_a);
 	ft_printf("ra\n");
 }
 
-// Rotate the first element of stack B
+// Rotate the first element of stack B to the bottom
 void	rb(t_stack *stack_b)
 {
 	rotate(stack_b);
