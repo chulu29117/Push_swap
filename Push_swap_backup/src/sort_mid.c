@@ -6,13 +6,14 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:12:38 by clu               #+#    #+#             */
-/*   Updated: 2025/01/15 14:28:07 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 12:07:30 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // Rotate the stack to bring the value to the top
+// If stack_name is 'b', rotate stack B
 static void	rotate_forward(t_stack *stack, int count, char stack_name)
 {
 	while (count-- > 0)
@@ -25,6 +26,7 @@ static void	rotate_forward(t_stack *stack, int count, char stack_name)
 }
 
 // Rotate the stack in reverse to bring the value to the top
+// If stack_name is 'b', reverse rotate stack B
 static void	rotate_reverse(t_stack *stack, int count, char stack_name)
 {
 	while (count-- > 0)
@@ -37,6 +39,7 @@ static void	rotate_reverse(t_stack *stack, int count, char stack_name)
 }
 
 // Rotate the stack to bring the value to the top
+// If the index is less than half the size of the stack, rotate forward
 static void	rot_to_top(t_stack *stack, int index, char stack_name)
 {
 	int	size;
@@ -55,6 +58,8 @@ static void	rot_to_top(t_stack *stack, int index, char stack_name)
 }
 
 // Push chunks of values from stack_a to stack_b
+// If the value is within the range of min and max, push to stack B
+// Otherwise, rotate stack A
 static void	push_chunk_to_b(t_stack *a, t_stack *b, int min, int max)
 {
 	int	size;
@@ -75,6 +80,10 @@ static void	push_chunk_to_b(t_stack *a, t_stack *b, int min, int max)
 }
 
 // Sort the stacks in chunks of 5 values
+// Loop through the chunks and push the chunk to stack B
+// Find the max value in stack B and rotate stack B to bring the max value to the top
+// Push the max value to stack A
+// Repeat until stack B is empty
 void	sort_mid(t_stack *stack_a, t_stack *stack_b, int size)
 {
 	int	chunk_size;
