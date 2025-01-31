@@ -6,15 +6,13 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:12:38 by clu               #+#    #+#             */
-/*   Updated: 2025/01/31 13:21:45 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 13:28:58 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // Rotate the stack to bring the value to the top
-// If rev is 1, rotate in reverse
-// If stack_name is 'b', rotate stack B
 static void	rotate_stack(t_stack *stack, int count, char stack_name, int rev)
 {
 	while (count > 0)
@@ -38,14 +36,12 @@ static void	rotate_stack(t_stack *stack, int count, char stack_name, int rev)
 }
 
 // Rotate the stack to bring the value to the top
-// If the index is less than half the size of the stack, rotate forward
-// If the index is greater than half the size of the stack, rotate in reverse
 static void	rot_to_top(t_stack *stack, int index, char stack_name)
 {
 	int	size;
 	int	count;
 	int	rev;
-	
+
 	size = stack->size;
 	if (index == 0)
 		return ;
@@ -81,10 +77,7 @@ static void	push_chunk_to_b(t_stack *a, t_stack *b, int min, int max)
 }
 
 // Process the chunks of values
-// Divide the stack into chunks of 5 values
-// Loop through the chunks and push the values to stack B
-// Push the chunks to stack B
-static void	process_chunks(t_stack *stack_a, t_stack *stack_b, int size, int num_chunks)
+static void	process_chunks(t_stack *a, t_stack *b, int size, int num_chunks)
 {
 	int	chunk_size;
 	int	min_chunk;
@@ -100,7 +93,7 @@ static void	process_chunks(t_stack *stack_a, t_stack *stack_b, int size, int num
 			max_chunk = size - 1;
 		else
 			max_chunk = (i + 1) * chunk_size - 1;
-		push_chunk_to_b(stack_a, stack_b, min_chunk, max_chunk);
+		push_chunk_to_b(a, b, min_chunk, max_chunk);
 		i++;
 	}
 }
