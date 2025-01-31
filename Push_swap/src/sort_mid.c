@@ -6,52 +6,58 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:12:38 by clu               #+#    #+#             */
-/*   Updated: 2025/01/15 14:28:07 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 13:15:20 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // Rotate the stack to bring the value to the top
-static void	rotate_forward(t_stack *stack, int count, char stack_name)
+// If rev is 1, rotate in reverse
+// If stack_name is 'b', rotate stack B
+static void	rotate_stack(t_stack *stack, int count, char stack_name, int rev)
 {
-	while (count-- > 0)
+	while (count > 0)
 	{
-		if (stack_name == 'b')
-			rb(stack);
+		if (rev)
+		{
+			if (stack_name == 'b')
+				rrb(stack);
+			else
+				rra(stack);
+		}
 		else
-			ra(stack);
-	}
-}
-
-// Rotate the stack in reverse to bring the value to the top
-static void	rotate_reverse(t_stack *stack, int count, char stack_name)
-{
-	while (count-- > 0)
-	{
-		if (stack_name == 'b')
-			rrb(stack);
-		else
-			rra(stack);
+		{
+			if (stack_name == 'b')
+				rb(stack);
+			else
+				ra(stack);
+		}
+		count--;
 	}
 }
 
 // Rotate the stack to bring the value to the top
+// If the index is less than half the size of the stack, rotate forward
+// If the index is greater than half the size of the stack, rotate in reverse
 static void	rot_to_top(t_stack *stack, int index, char stack_name)
 {
 	int	size;
 	int	count;
-
+	int	rev;
+	
 	size = stack->size;
 	if (index == 0)
 		return ;
-	if (index <= size / 2)
-		rotate_forward(stack, index, stack_name);
-	else
+	rev = 0;
+	if (index > size / 2)
 	{
 		count = size - index;
-		rotate_reverse(stack, count, stack_name);
+		rev = 1;
 	}
+	else
+		count = index;
+	rotate_stack(stack, count, stack_name, rev);
 }
 
 // Push chunks of values from stack_a to stack_b
@@ -82,7 +88,7 @@ void	sort_mid(t_stack *stack_a, t_stack *stack_b, int size)
 	int	min_chunk;
 	int	max_chunk;
 	int	i;
-	int num_chunks;
+	int	num_chunks;
 
 	num_chunks = 5;
 	chunk_size = size / num_chunks;
