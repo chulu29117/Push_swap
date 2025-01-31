@@ -6,12 +6,14 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:02 by clu               #+#    #+#             */
-/*   Updated: 2025/01/15 13:24:15 by clu              ###   ########.fr       */
+/*   Updated: 2025/01/31 10:58:31 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Check if the stack is sorted in ascending order
+// Return 1 if the stack is sorted, 0 otherwise
 int	is_sorted(t_stack *stack)
 {
 	t_node	*current;
@@ -28,6 +30,11 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
+// Sort the stack using different algorithms based on the size of the stack
+// Normalize the stack
+// Sort small stacks with 5 or less elements
+// Sort medium stacks with 100 or less elements
+// Sort large stacks with more than 100 elements
 static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	normalize_stack(stack_a, stack_a->size);
@@ -39,6 +46,13 @@ static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 		sort_large(stack_a, stack_b);
 }
 
+// Initialize two stacks
+// Check if stacks are initialized successfully
+// Parse input arguments
+// Check if the stack is already sorted
+// Free the stacks if the stack is sorted
+// Sort the stack
+// Free the stacks
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
