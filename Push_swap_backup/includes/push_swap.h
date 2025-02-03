@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:51:44 by clu               #+#    #+#             */
-/*   Updated: 2025/01/31 16:20:08 by clu              ###   ########.fr       */
+/*   Updated: 2025/02/03 15:51:11 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_stack
 // Stack manipulation
 t_stack	*init_stack(void);
 int		push(t_stack *stack, int value);
-int		*pop(t_stack *stack);
 void	free_stack(t_stack **stack);
 int		is_sorted(t_stack *stack);
 

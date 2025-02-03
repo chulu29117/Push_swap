@@ -6,7 +6,7 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:32:54 by clu               #+#    #+#             */
-/*   Updated: 2025/01/31 12:14:08 by clu              ###   ########.fr       */
+/*   Updated: 2025/02/03 15:51:04 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,28 +54,6 @@ int	push(t_stack *stack, int value)
 	}
 	stack->size++;
 	return (1);
-}
-
-// Pop the top value from the stack
-// Create a new node and assign the value
-// Assign the next node to the top
-// Decrease the size of the stack
-int	*pop(t_stack *stack)
-{
-	t_node	*temp;
-	int		*value;
-
-	if (!stack || !stack->top)
-		return (NULL);
-	temp = stack->top;
-	value = malloc(sizeof(int));
-	if (!value)
-		return (free(temp), NULL);
-	*value = temp->value;
-	stack->top = temp->next;
-	free(temp);
-	stack->size--;
-	return (value);
 }
 
 // Free the stack and all nodes

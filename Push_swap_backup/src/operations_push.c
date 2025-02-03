@@ -6,13 +6,13 @@
 /*   By: clu <clu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:24:40 by clu               #+#    #+#             */
-/*   Updated: 2025/01/31 11:56:11 by clu              ###   ########.fr       */
+/*   Updated: 2025/02/03 16:00:31 by clu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Swap the first two elements of stack A
+// Push the first element of stack B to the bottom of stack A
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*temp;
@@ -32,7 +32,7 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 	ft_printf("pa\n");
 }
 
-// Swap the first two elements of stack B
+// Push the first element of stack A to the bottom of stack B
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*temp;
